@@ -1,101 +1,193 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  ArrowRight,
+  FileText, Code2, Image, FileDown, Wrench, Sparkles,
+} from "lucide-react";
+import { tools, categories } from "@/config/tools";
+import ToolCard from "@/components/ToolCard";
+import HomeSearch from "./HomeSearch";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "ToolBrigade — Free Online Tools for Developers & Creators",
+  description: `${tools.length}+ free browser-based tools for text, images, PDFs, code, and conversions. No sign-up, no uploads, instant results.`,
+  keywords: [
+    "free online tools", "developer tools", "image tools", "pdf tools",
+    "text tools", "code tools", "converter tools", "browser tools", "toolbrigade",
+  ],
+  alternates: { canonical: "https://toolbrigade.com" },
+  openGraph: {
+    title: "ToolBrigade — Free Online Tools for Developers & Creators",
+    description: `${tools.length}+ free browser-based tools. No sign-up required.`,
+    url: "https://toolbrigade.com",
+  },
+};
+
+const categoryMeta: Record<string, { icon: React.ElementType; description: string }> = {
+  Text: {
+    icon: FileText,
+    description: "Word counters, case converters, diff checkers & more",
+  },
+  Code: {
+    icon: Code2,
+    description: "JSON, Base64, UUID, regex, hash generators & more",
+  },
+  Image: {
+    icon: Image,
+    description: "Resize, compress, convert, crop & edit images",
+  },
+  PDF: {
+    icon: FileDown,
+    description: "Merge, split, compress, rotate & edit PDFs",
+  },
+  Converter: {
+    icon: Wrench,
+    description: "Units, currencies, dates, numbers & more",
+  },
+  Misc: {
+    icon: Sparkles,
+    description: "QR codes, passwords, gradients, palettes & more",
+  },
+};
+
+
+
+const featuredTools = tools.slice(0, 8);
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div>
+      {/* ── Hero ── */}
+      <section className="relative overflow-hidden border-b border-[var(--border)]">
+        <div
+          className="absolute inset-0 opacity-[0.025] dark:opacity-[0.04]"
+          style={{
+            backgroundImage: `radial-gradient(var(--border) 1px, transparent 1px)`,
+            backgroundSize: "24px 24px",
+          }}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="relative max-w-7xl mx-auto px-4 pt-20 md:pt-28 pb-10 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[var(--text)] mb-5 leading-[1.1]">
+            Browser tools that just{" "}
+            <span className="text-[var(--brand)]">work.</span>
+          </h1>
+          <p className="text-lg md:text-xl text-[var(--text-muted)] mb-10 max-w-2xl mx-auto leading-relaxed">
+            {tools.length}+ free utilities for text, images, PDFs, code, and conversions. No signup, no uploads to random servers, no &ldquo;start your free trial.&rdquo; Runs in your browser. Free forever.
+          </p>
+          <HomeSearch />
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
+            <Link href="/tools" className="btn-primary">
+              Browse All Tools <ArrowRight size={16} />
+            </Link>
+            <Link href="/about" className="btn-secondary">
+              Learn More
+            </Link>
+          </div>
+          {/* category pills inside hero */}
+          <div className="flex flex-wrap justify-center gap-2 pb-10">
+            {categories.map((cat) => {
+              const meta = categoryMeta[cat];
+              const CatIcon = meta?.icon ?? Wrench;
+              const count = tools.filter((t) => t.category === cat).length;
+              return (
+                <Link
+                  key={cat}
+                  href={`/tools?category=${cat}`}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--brand)] hover:text-[var(--brand)] text-[var(--text-muted)] text-xs font-medium transition-colors group"
+                >
+                  <CatIcon size={12} strokeWidth={2} className="group-hover:text-[var(--brand)] transition-colors" />
+                  {cat}
+                  <span className="text-[var(--text-subtle)]">{count}</span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4">
+
+        {/* ── Featured Tools ── */}
+        <section className="py-14">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-lg font-semibold text-[var(--text)]">Popular right now</h2>
+            <Link href="/tools" className="btn-ghost text-sm">
+              All tools <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {featuredTools.map((tool) => <ToolCard key={tool.slug} tool={tool} />)}
+          </div>
+        </section>
+
+        {/* ── Why this exists — full-width break ── */}
+      </div>
+      <section className="border-y border-[var(--border)] bg-[var(--bg-subtle)] py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+
+            {/* left — statement */}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-[var(--brand)] mb-4">Why this exists</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[var(--text)] leading-tight mb-6">
+                Most tool sites are a tax on your time.
+              </h2>
+              <p className="text-[var(--text-muted)] leading-relaxed mb-4">
+                You search for something simple. You get a cookie banner, three ads, a signup wall, and a file upload to a server you&apos;ve never heard of. For a Base64 decode.
+              </p>
+              <p className="text-[var(--text-muted)] leading-relaxed mb-8">
+                ToolBrigade runs everything in your browser. Nothing leaves your device. No account, no paywall, no &ldquo;upgrade to pro.&rdquo;
+              </p>
+              <Link href="/tools" className="inline-flex items-center gap-2 btn-primary">
+                Browse all {tools.length} tools <ArrowRight size={16} />
+              </Link>
+            </div>
+
+            {/* right — 4 points */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[var(--border)] rounded-xl overflow-hidden border border-[var(--border)]">
+              {[
+                { title: "No account", body: "Open a tool and use it. That's it. No email, no password, no profile." },
+                { title: "No uploads", body: "Your files never leave your device. Everything runs locally in the browser." },
+                { title: "No paywall", body: "Every tool is free. Not free-trial free. Actually free, forever." },
+                { title: "No nonsense", body: "No cookie banners chasing you around. No ads. No dark patterns." },
+              ].map((item) => (
+                <div key={item.title} className="bg-[var(--bg-card)] px-6 py-6">
+                  <p className="font-semibold text-[var(--text)] mb-1">{item.title}</p>
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">{item.body}</p>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <div className="max-w-7xl mx-auto px-4">
+
+        {/* ── All tools by category ── */}
+        <section className="py-16 border-t border-[var(--border)]">
+          <h2 className="text-lg font-semibold text-[var(--text)] mb-10">All {tools.length} tools</h2>
+          <div className="space-y-14">
+            {categories.map((cat) => {
+              const catTools = tools.filter((t) => t.category === cat);
+              const meta = categoryMeta[cat];
+              const CatIcon = meta?.icon ?? Wrench;
+              return (
+                <div key={cat}>
+                  <div className="flex items-center gap-2 mb-5">
+                    <CatIcon size={14} strokeWidth={2} className="text-[var(--text-muted)]" />
+                    <h3 className="text-sm font-semibold text-[var(--text)]">{cat}</h3>
+                    <span className="text-xs text-[var(--text-subtle)]">— {catTools.length}</span>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                    {catTools.map((tool) => <ToolCard key={tool.slug} tool={tool} />)}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
+

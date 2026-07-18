@@ -9,6 +9,22 @@
 # testing
 /coverage
 
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/tests/fixtures/
+*.spec.ts-snapshots/
+
+# logs
+dev-server.log
+*.log
+
+# zip / archives
+*.zip
+*.tar.gz
+*.rar
+
 # next.js
 /.next/
 /out/
@@ -27,6 +43,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel

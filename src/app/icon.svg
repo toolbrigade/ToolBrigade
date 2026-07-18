@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#1E5F4E"/>
+
+  <!-- T: bar -->
+  <rect x="6" y="7" width="20" height="3.5" rx="1.2" fill="white"/>
+  <!-- T: stem -->
+  <rect x="14.5" y="10.5" width="3" height="7" rx="1" fill="white"/>
+
+  <!-- B: stem -->
+  <rect x="14.5" y="18.5" width="3" height="7" rx="1" fill="white"/>
+  <!-- B: top lobe -->
+  <path d="M14.5 18.5 h5 a2.25 2.25 0 0 1 0 4 h-5 z" fill="white"/>
+  <!-- B: bottom lobe -->
+  <path d="M14.5 22.5 h5.5 a2.5 2.5 0 0 1 0 3.5 h-5.5 z" fill="white"/>
+</svg>

@@ -2,26 +2,115 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #FAFAF8;
+    --bg-subtle: #F2F0EA;
+    --bg-card: #FFFFFF;
+    --border: #E5E3DD;
+    --border-hover: #1E5F4E;
+    --text: #1A1B1E;
+    --text-muted: #6B6D70;
+    --text-subtle: #6B6D70;
+    --brand: #1E5F4E;
+    --brand-light: #EAF2EF;
+  }
+
+  .dark {
+    --bg: #09090b;
+    --bg-subtle: #111113;
+    --bg-card: #18181b;
+    --border: #27272a;
+    --border-hover: #4F9A82;
+    --text: #fafafa;
+    --text-muted: #a1a1aa;
+    --text-subtle: #71717a;
+    --brand: #4F9A82;
+    --brand-light: #17332A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[var(--bg)] text-[var(--text)] text-base antialiased;
+  }
+
+  * {
+    @apply border-[var(--border)];
+  }
+
+  ::selection {
+    background: #EAF2EF;
+    color: #1E5F4E;
+  }
+
+  .dark ::selection {
+    background: #17332A;
+    color: #4F9A82;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@layer components {
+  .card {
+    @apply bg-[var(--bg-card)] border border-[var(--border)] rounded-lg p-5 transition-all duration-200;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .card-hover {
+    @apply hover:border-[var(--border-hover)] hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)];
+  }
+
+  .btn-primary {
+    @apply bg-[var(--brand)] hover:bg-brand-700 active:bg-brand-800 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors duration-150 min-h-[44px] inline-flex items-center justify-center gap-2 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)];
+  }
+
+  .btn-secondary {
+    @apply bg-[var(--bg-subtle)] hover:bg-[var(--border)] text-[var(--text)] font-medium px-5 py-2.5 rounded-lg transition-colors duration-150 min-h-[44px] inline-flex items-center justify-center gap-2 border border-[var(--border)];
+  }
+
+  .btn-ghost {
+    @apply text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)] font-medium px-3 py-2 rounded-lg transition-colors duration-150 inline-flex items-center gap-2;
+  }
+
+  .input {
+    @apply w-full bg-[var(--bg-subtle)] border border-[var(--border)] rounded-lg px-4 py-2.5 text-[var(--text)] placeholder:text-[var(--text-subtle)] min-h-[44px] transition-colors duration-150;
+    outline: none;
+  }
+  .input:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 20%, transparent);
+  }
+
+  .textarea {
+    @apply w-full bg-[var(--bg-subtle)] border border-[var(--border)] rounded-lg px-4 py-3 text-[var(--text)] placeholder:text-[var(--text-subtle)] font-mono text-sm resize-y transition-colors duration-150;
+    outline: none;
+  }
+  .textarea:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 20%, transparent);
+  }
+
+  .pill {
+    @apply px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-150 min-h-[36px] flex items-center cursor-pointer;
+  }
+
+  .pill-active {
+    @apply bg-[var(--brand)] text-white shadow-[0_1px_2px_rgba(0,0,0,0.04),0_1px_3px_rgba(0,0,0,0.06)];
+  }
+
+  .pill-inactive {
+    @apply bg-[var(--bg-subtle)] text-[var(--text-muted)] hover:bg-[var(--border)] border border-[var(--border)];
+  }
+
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-[var(--brand)];
+  }
+
+  /* Keyboard focus — visible ring on all interactive elements */
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
