@@ -3238,12 +3238,12 @@ export const tools: Tool[] = [
   {
     slug: "currency-converter",
     name: "Currency Converter",
-    description: "Convert between 30 major currencies using live exchange rates from exchangerate-api.com.",
+    description: "Convert between 160+ currencies using live exchange rates from exchangerate-api.com.",
     category: "Converter",
     icon: "DollarSign",
     component: "CurrencyConverter",
     longDescription:
-      "Getting an accurate currency conversion requires live exchange rates, not hardcoded values that go stale. This converter fetches rates on demand from the free exchangerate-api.com API using the source currency as the base. Enter an amount, select the source currency (From) and target currency (To) from dropdowns containing 30 major currencies (USD, EUR, GBP, JPY, CAD, AUD, CHF, CNY, INR, and more), then click Convert. The result shows the converted amount, the full precision rate (e.g. 1 USD = 0.923456 EUR), and the exact conversion. Rates are fetched live each time you click Convert — they are updated daily by the provider. An internet connection is required. Travellers checking exchange rates, businesses invoicing in foreign currencies, and anyone comparing prices across markets are the primary users.",
+      "Convert between 160+ currencies using live exchange rates from exchangerate-api.com. The result shows the converted amount, the full precision rate (e.g. 1 USD = 0.923456 EUR), and the exact conversion. Rates are fetched live each time you click Convert — they are updated daily by the provider. An internet connection is required. Travellers checking exchange rates, businesses invoicing in foreign currencies, and anyone comparing prices across markets are the primary users.",
     howToUse: [
       "Enter the amount to convert.",
       "Select the source currency from the 'From' dropdown.",
@@ -3274,7 +3274,7 @@ export const tools: Tool[] = [
       {
         question: "Which currencies are supported?",
         answer:
-          "30 major currencies: USD, EUR, GBP, JPY, CAD, AUD, CHF, CNY, INR, MXN, BRL, KRW, SGD, HKD, NOK, SEK, DKK, NZD, ZAR, AED, SAR, TRY, PLN, THB, IDR, MYR, PHP, CZK, HUF, RON.",
+          "160+ currencies grouped by region: Major (USD, EUR, GBP, JPY, CHF, CAD, AUD, NZD), Asia & Pacific, Europe, Middle East & Africa, Americas, and more. All currencies supported by the exchangerate-api.com free tier are included.",
       },
       {
         question: "Is my data sent to a server?",
@@ -3703,7 +3703,7 @@ export const tools: Tool[] = [
     slug: "qr-generator",
     name: "QR Code Generator",
     description: "Generate QR codes for any text or URL with custom size, foreground, and background colors.",
-    category: "Misc",
+    category: "Utilities",
     icon: "QrCode",
     component: "QrGenerator",
     longDescription:
@@ -3750,7 +3750,7 @@ export const tools: Tool[] = [
     slug: "qr-scanner",
     name: "QR Code Scanner",
     description: "Scan QR codes using your device camera or by uploading an image — uses jsQR in your browser.",
-    category: "Misc",
+    category: "Utilities",
     icon: "ScanLine",
     component: "QrScanner",
     longDescription:
@@ -3796,7 +3796,7 @@ export const tools: Tool[] = [
     slug: "barcode-generator",
     name: "Barcode Generator",
     description: "Generate barcodes in CODE128, EAN13, EAN8, UPC, CODE39, ITF14, and more — download as SVG.",
-    category: "Misc",
+    category: "Utilities",
     icon: "BarChart2",
     component: "BarcodeGenerator",
     longDescription:
@@ -3843,7 +3843,7 @@ export const tools: Tool[] = [
     slug: "password-generator",
     name: "Password Generator",
     description: "Generate strong random passwords with custom length and character sets — strength indicator included.",
-    category: "Misc",
+    category: "Utilities",
     icon: "KeyRound",
     component: "PasswordGenerator",
     longDescription:
@@ -3891,7 +3891,7 @@ export const tools: Tool[] = [
     slug: "random-number-generator",
     name: "Random Number Generator",
     description: "Generate random integers within a custom min/max range — with optional no-duplicates mode.",
-    category: "Misc",
+    category: "Utilities",
     icon: "Dices",
     component: "RandomNumberGenerator",
     longDescription:
@@ -3938,7 +3938,7 @@ export const tools: Tool[] = [
     slug: "coin-dice",
     name: "Coin Flip & Dice Roller",
     description: "Flip a virtual coin or roll up to 20 dice with d4, d6, d8, d10, d12, d20, or d100 sides.",
-    category: "Misc",
+    category: "Utilities",
     icon: "Dices",
     component: "CoinDice",
     longDescription:
@@ -3984,7 +3984,7 @@ export const tools: Tool[] = [
     slug: "color-palette-generator",
     name: "Color Palette Generator",
     description: "Generate 5-color palettes using monochromatic, analogous, complementary, triadic, or rainbow harmony.",
-    category: "Misc",
+    category: "Utilities",
     icon: "Palette",
     component: "ColorPaletteGenerator",
     longDescription:
@@ -4031,7 +4031,7 @@ export const tools: Tool[] = [
     slug: "gradient-generator",
     name: "CSS Gradient Generator",
     description: "Generate linear or radial CSS gradients with unlimited color stops — copy the CSS property instantly.",
-    category: "Misc",
+    category: "Utilities",
     icon: "Blend",
     component: "GradientGenerator",
     longDescription:
@@ -4078,7 +4078,7 @@ export const tools: Tool[] = [
     slug: "placeholder-image",
     name: "Placeholder Image Generator",
     description: "Generate placeholder images at any size with custom colors and label — download as PNG.",
-    category: "Misc",
+    category: "Utilities",
     icon: "ImagePlus",
     component: "PlaceholderImage",
     longDescription:
@@ -4125,7 +4125,7 @@ export const tools: Tool[] = [
     slug: "invoice-number-generator",
     name: "Invoice Number Generator",
     description: "Generate sequential invoice numbers with custom prefix, separator, year/month, and zero-padded sequence.",
-    category: "Misc",
+    category: "Utilities",
     icon: "Receipt",
     component: "InvoiceNumberGenerator",
     longDescription:

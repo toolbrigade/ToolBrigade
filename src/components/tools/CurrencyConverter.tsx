@@ -2,7 +2,15 @@
 import { useState } from "react";
 import { RefreshCw } from "lucide-react";
 
-const CURRENCIES = ["USD","EUR","GBP","JPY","CAD","AUD","CHF","CNY","INR","MXN","BRL","KRW","SGD","HKD","NOK","SEK","DKK","NZD","ZAR","AED","SAR","TRY","PLN","THB","IDR","MYR","PHP","CZK","HUF","RON"];
+const CURRENCY_GROUPS: { label: string; currencies: string[] }[] = [
+  { label: "Major", currencies: ["USD","EUR","GBP","JPY","CHF","CAD","AUD","NZD"] },
+  { label: "Asia & Pacific", currencies: ["CNY","HKD","SGD","INR","KRW","TWD","THB","MYR","IDR","PHP","VND","BDT","PKR","LKR","NPR","MMK","KHR","LAK","MNT","KZT","UZS","AZN","GEL","AMD","BYN"] },
+  { label: "Europe", currencies: ["NOK","SEK","DKK","PLN","CZK","HUF","RON","BGN","HRK","RSD","ISK","UAH","MDL","ALL","BAM","MKD"] },
+  { label: "Middle East & Africa", currencies: ["AED","SAR","QAR","KWD","BHD","OMR","JOD","ILS","EGP","MAD","TND","DZD","LYD","NGN","GHS","KES","UGX","TZS","ETB","ZAR","ZMW","MZN","BWP","MUR","SCR","XOF","XAF"] },
+  { label: "Americas", currencies: ["MXN","BRL","ARS","CLP","COP","PEN","UYU","BOB","PYG","VES","DOP","GTQ","HNL","NIO","CRC","PAB","CUP","JMD","TTD","BBD","BSD","BZD","GYD","SRD"] },
+  { label: "Other", currencies: ["TRY","RUB","IRR","IQD","AFN","FJD","PGK","WST","TOP","SBD","VUV","XPF"] },
+];
+const CURRENCIES = CURRENCY_GROUPS.flatMap(g => g.currencies);
 
 export default function CurrencyConverter() {
   const [amount, setAmount] = useState("1");
@@ -16,12 +24,22 @@ export default function CurrencyConverter() {
   async function convert() {
     setLoading(true); setError(""); setResult(null);
     try {
-      const res = await fetch(`https://api.exchangerate-api.com/v4/latest/${from}`);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000);
+      let res: Response;
+      try {
+        res = await fetch(`https://api.exchangerate-api.com/v4/latest/${from}`, { signal: controller.signal });
+      } finally {
+        clearTimeout(timeout);
+      }
       if (!res.ok) throw new Error("API error");
       const data = await res.json();
       const r = data.rates[to];
+      if (r == null) throw new Error("Rate not found");
       setRate(r); setResult(parseFloat(amount) * r);
-    } catch { setError("Could not fetch exchange rates. Please try again."); }
+    } catch {
+      setError("Live rates are temporarily unavailable — please try again shortly.");
+    }
     setLoading(false);
   }
 
@@ -35,13 +53,21 @@ export default function CurrencyConverter() {
         <div>
           <label className="text-xs text-[var(--text-muted)]">From</label>
           <select className="input mt-1" value={from} onChange={e => setFrom(e.target.value)}>
-            {CURRENCIES.map(c => <option key={c} value={c}>{c}</option>)}
+            {CURRENCY_GROUPS.map(g => (
+              <optgroup key={g.label} label={g.label}>
+                {g.currencies.map(c => <option key={c} value={c}>{c}</option>)}
+              </optgroup>
+            ))}
           </select>
         </div>
         <div>
           <label className="text-xs text-[var(--text-muted)]">To</label>
           <select className="input mt-1" value={to} onChange={e => setTo(e.target.value)}>
-            {CURRENCIES.map(c => <option key={c} value={c}>{c}</option>)}
+            {CURRENCY_GROUPS.map(g => (
+              <optgroup key={g.label} label={g.label}>
+                {g.currencies.map(c => <option key={c} value={c}>{c}</option>)}
+              </optgroup>
+            ))}
           </select>
         </div>
       </div>

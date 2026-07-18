@@ -30,14 +30,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       siteName: "ToolBrigade",
       type: "website",
-      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `${tool.name} — ToolBrigade` }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
       site: "@toolbrigade",
-      images: ["/og-image.png"],
     },
     alternates: { canonical: url },
   };

@@ -15,7 +15,7 @@ const categoryIcons: Record<string, React.ElementType> = {
   Image: ImageIcon,
   PDF: FileDown,
   Converter: Wrench,
-  Misc: Sparkles,
+  Utilities: Sparkles,
 };
 
 const navLinks = [

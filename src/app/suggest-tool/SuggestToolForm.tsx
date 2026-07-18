@@ -85,7 +85,7 @@ export default function SuggestToolForm() {
                 <option>Image</option>
                 <option>PDF</option>
                 <option>Converter</option>
-                <option>Misc</option>
+                <option>Utilities</option>
                 <option>New Category</option>
               </select>
             </div>

@@ -12,7 +12,7 @@ const categoryMeta: Record<string, { icon: React.ElementType }> = {
   Image: { icon: Image },
   PDF: { icon: FileDown },
   Converter: { icon: Wrench },
-  Misc: { icon: Sparkles },
+  Utilities: { icon: Sparkles },
 };
 
 export default function AllToolsSection() {
