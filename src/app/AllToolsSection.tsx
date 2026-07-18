@@ -19,10 +19,11 @@ export default function AllToolsSection() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const id = requestIdleCallback
+    const hasRIC = typeof requestIdleCallback !== "undefined";
+    const id = hasRIC
       ? requestIdleCallback(() => setVisible(true))
       : setTimeout(() => setVisible(true), 200);
-    return () => (requestIdleCallback ? cancelIdleCallback(id as number) : clearTimeout(id as ReturnType<typeof setTimeout>));
+    return () => (hasRIC ? cancelIdleCallback(id as number) : clearTimeout(id as ReturnType<typeof setTimeout>));
   }, []);
 
   if (!visible) return (
