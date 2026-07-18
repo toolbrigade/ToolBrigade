@@ -13,8 +13,12 @@
 /test-results/
 /playwright-report/
 /playwright/.cache/
-/tests/fixtures/
+/tests/
+playwright.config.ts
 *.spec.ts-snapshots/
+
+# github actions
+/.github/
 
 # logs
 dev-server.log
