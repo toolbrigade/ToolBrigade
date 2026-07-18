@@ -34,7 +34,7 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-2 gap-16 items-start">
             {/* Left — info */}
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-[var(--text)] tracking-tight mb-6 leading-tight">
+              <h1 className="font-display text-4xl md:text-5xl font-semibold text-[var(--text)] tracking-tight mb-6 leading-tight">
                 Get in touch
               </h1>
               <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-10">

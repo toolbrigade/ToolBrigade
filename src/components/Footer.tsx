@@ -1,6 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
-import { categories, tools } from "@/config/tools";
+import { tools, categories } from "@/config/tools";
 
 const footerLinks = {
   Product: [
@@ -9,6 +8,7 @@ const footerLinks = {
     { href: "/tools?category=Image", label: "Image Tools" },
     { href: "/tools?category=PDF", label: "PDF Tools" },
     { href: "/tools?category=Code", label: "Code Tools" },
+    { href: "/tools?category=Converter", label: "Converter Tools" },
     { href: "/changelog", label: "Changelog" },
   ],
   Company: [
@@ -33,9 +33,8 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="col-span-2 md:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-4 group w-fit">
-              <Image src="/logo.png" alt="ToolBrigade" width={32} height={32} className="w-8 h-8 rounded-lg" />
-              <span className="font-bold text-lg tracking-tight text-[var(--text)]">
+            <Link href="/" className="flex items-center gap-2 mb-4 w-fit">
+              <span className="font-display font-semibold text-xl tracking-tight text-[var(--text)]">
                 Tool<span className="text-[var(--brand)]">Brigade</span>
               </span>
             </Link>
@@ -55,7 +54,6 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-
           </div>
 
           {/* Link columns */}
@@ -69,7 +67,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
+                      className="text-sm text-[var(--text-muted)] hover:text-[var(--brand)] transition-colors"
                     >
                       {link.label}
                     </Link>

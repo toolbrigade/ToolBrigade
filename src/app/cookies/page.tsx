@@ -32,7 +32,7 @@ export default function CookiesPage() {
 
       <div className="mb-10">
         <p className="section-label mb-3">Legal</p>
-        <h1 className="text-3xl md:text-4xl font-bold text-[var(--text)] mb-3">Cookie Policy</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-semibold text-[var(--text)] mb-3">Cookie Policy</h1>
         <p className="text-sm text-[var(--text-muted)]">Last updated: {lastUpdated}</p>
       </div>
 
@@ -45,14 +45,14 @@ export default function CookiesPage() {
       <div className="space-y-10 text-[var(--text-muted)] leading-relaxed">
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">What Are Cookies?</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">What Are Cookies?</h2>
           <p>
             Cookies are small text files stored on your device by your browser when you visit a website. They help websites remember information about your visit, such as your preferences or session state.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-4">Cookies Used on ToolBrigade</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-4">Cookies Used on ToolBrigade</h2>
           <div className="space-y-4">
             <div className="card">
               <div className="flex items-start justify-between gap-3 mb-2">
@@ -75,7 +75,7 @@ export default function CookiesPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">Cookies NOT Used</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">Cookies NOT Used</h2>
           <ul className="space-y-2 text-sm list-disc list-inside">
             <li>Advertising or retargeting cookies</li>
             <li>Social media tracking pixels</li>
@@ -86,7 +86,7 @@ export default function CookiesPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">Managing Cookies</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">Managing Cookies</h2>
           <p className="mb-3">
             You can control and delete cookies through your browser settings. Disabling analytics cookies will not affect your ability to use any tool on ToolBrigade.
           </p>
@@ -98,7 +98,7 @@ export default function CookiesPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">Contact</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">Contact</h2>
           <p>
             Questions about cookie use? Contact{" "}
             <a href="mailto:privacy@toolbrigade.com" className="text-[var(--brand)] hover:underline">

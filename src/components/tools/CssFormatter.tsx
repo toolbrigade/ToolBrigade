@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 function formatCss(css: string): string {
   return css
@@ -15,11 +15,9 @@ function formatCss(css: string): string {
 export default function CssFormatter() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const [copied, setCopied] = useState(false);
 
   function format() { setOutput(formatCss(input)); }
   function minify() { setOutput(input.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\s+/g, " ").replace(/\s*([{}:;,>~+])\s*/g, "$1").trim()); }
-  function copy() { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500); }
 
   return (
     <div className="space-y-4">
@@ -31,9 +29,9 @@ export default function CssFormatter() {
         <div>
           <div className="flex justify-between items-center mb-1">
             <label className="text-xs font-medium text-[var(--text-muted)]">Output</label>
-            {output && <button onClick={copy} className="btn-secondary flex items-center gap-1 text-xs py-1 px-2 min-h-0"><Copy size={12} />{copied ? "Copied!" : "Copy"}</button>}
+            <CopyButton text={output} />
           </div>
-          <textarea className="textarea min-h-[240px]" value={output} placeholder="Result appears here…" onChange={() => {}} />
+          <textarea className="textarea min-h-[240px]" value={output} placeholder="Result appears here…" readOnly />
         </div>
       </div>
       <div className="flex gap-2">

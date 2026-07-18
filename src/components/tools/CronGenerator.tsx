@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 const PRESETS = [
   { label: "Every minute", cron: "* * * * *" },
@@ -19,7 +19,6 @@ function explain(cron: string): string {
   const parts = cron.trim().split(/\s+/);
   if (parts.length !== 5) return "Invalid cron expression — must have 5 fields.";
   const [min, hour, dom, month, dow] = parts;
-  const fmtField = (v: string, unit: string) => v === "*" ? `every ${unit}` : v.startsWith("*/") ? `every ${v.slice(2)} ${unit}s` : `at ${unit} ${v}`;
   const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   const months = ["","January","February","March","April","May","June","July","August","September","October","November","December"];
   let desc = "Runs ";
@@ -33,9 +32,7 @@ function explain(cron: string): string {
 
 export default function CronGenerator() {
   const [cron, setCron] = useState("* * * * *");
-  const [copied, setCopied] = useState(false);
   const explanation = explain(cron);
-  function copy() { navigator.clipboard.writeText(cron); setCopied(true); setTimeout(() => setCopied(false), 1500); }
 
   return (
     <div className="space-y-4">
@@ -43,7 +40,7 @@ export default function CronGenerator() {
         <label className="text-xs font-medium text-[var(--text-muted)] mb-1 block">Cron expression</label>
         <div className="flex gap-2">
           <input type="text" className="input font-mono flex-1" value={cron} onChange={e => setCron(e.target.value)} placeholder="* * * * *" />
-          <button onClick={copy} className="btn-secondary flex items-center gap-1 text-sm"><Copy size={14} />{copied ? "Copied!" : "Copy"}</button>
+          <CopyButton text={cron} />
         </div>
         <p className="text-xs text-[var(--text-muted)] mt-1">Format: minute hour day-of-month month day-of-week</p>
       </div>

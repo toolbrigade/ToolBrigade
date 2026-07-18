@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 function htmlToMd(html: string): string {
   return html
@@ -24,9 +24,7 @@ function htmlToMd(html: string): string {
 
 export default function HtmlToMarkdown() {
   const [input, setInput] = useState("");
-  const [copied, setCopied] = useState(false);
   const output = htmlToMd(input);
-  function copy() { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500); }
 
   return (
     <div className="space-y-4">
@@ -38,7 +36,7 @@ export default function HtmlToMarkdown() {
         <div>
           <div className="flex justify-between items-center mb-1">
             <label className="text-xs font-medium text-[var(--text-muted)]">Markdown</label>
-            <button onClick={copy} className="btn-secondary flex items-center gap-1 text-xs py-1 px-2 min-h-0"><Copy size={12} />{copied ? "Copied!" : "Copy"}</button>
+            <CopyButton text={output} />
           </div>
           <textarea className="textarea min-h-[280px]" readOnly value={output} />
         </div>

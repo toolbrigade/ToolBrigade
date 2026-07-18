@@ -115,7 +115,7 @@ export default function ToolPage({ params }: Props) {
           <Icon size={24} strokeWidth={2.5} />
         </div>
         <div>
-          <h1 className="text-2xl font-semibold text-[var(--text)]">{tool.name}</h1>
+          <h1 className="font-display text-2xl font-semibold text-[var(--text)]">{tool.name}</h1>
           <p className="text-[var(--text-muted)] mt-1">{tool.description}</p>
         </div>
       </div>
@@ -127,7 +127,7 @@ export default function ToolPage({ params }: Props) {
 
       {/* How to use */}
       <section className="mb-10">
-        <h2 className="text-base font-semibold text-[var(--text)] mb-4">How to use this tool</h2>
+        <h2 className="font-display text-base font-semibold text-[var(--text)] mb-4">How to use this tool</h2>
         <ol className="space-y-2">
           {tool.howToUse.map((step, i) => (
             <li key={i} className="flex gap-3 text-sm text-[var(--text-muted)]">
@@ -142,20 +142,20 @@ export default function ToolPage({ params }: Props) {
 
       {/* Long description */}
       <section className="mb-10">
-        <h2 className="text-base font-semibold text-[var(--text)] mb-3">About {tool.name}</h2>
+        <h2 className="font-display text-base font-semibold text-[var(--text)] mb-3">About {tool.name}</h2>
         <p className="text-sm text-[var(--text-muted)] leading-relaxed">{tool.longDescription}</p>
       </section>
 
       {/* FAQ */}
       <section className="mb-10">
-        <h2 className="text-base font-semibold text-[var(--text)] mb-4">Frequently asked questions</h2>
+        <h2 className="font-display text-base font-semibold text-[var(--text)] mb-4">Frequently asked questions</h2>
         <FaqAccordion faqs={tool.faqs} />
       </section>
 
       {/* Related tools */}
       {related.length > 0 && (
         <section>
-          <h2 className="text-base font-semibold text-[var(--text)] mb-4">Related Tools</h2>
+          <h2 className="font-display text-base font-semibold text-[var(--text)] mb-4">Related Tools</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {related.map((t) => <ToolCard key={t.slug} tool={t} />)}
           </div>

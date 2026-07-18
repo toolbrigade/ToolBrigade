@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { Copy, RefreshCw } from "lucide-react";
+import { RefreshCw } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 const CHARS = {
   upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -14,7 +15,6 @@ export default function RandomStringGenerator() {
   const [opts, setOpts] = useState({ upper: true, lower: true, digits: true, symbols: false });
   const [count, setCount] = useState(1);
   const [results, setResults] = useState<string[]>([]);
-  const [copied, setCopied] = useState("");
 
   function generate() {
     const pool = Object.entries(opts).filter(([, v]) => v).map(([k]) => CHARS[k as keyof typeof CHARS]).join("");
@@ -23,8 +23,6 @@ export default function RandomStringGenerator() {
       Array.from({ length }, () => pool[Math.floor(Math.random() * pool.length)]).join("")
     ));
   }
-
-  function copy(s: string) { navigator.clipboard.writeText(s); setCopied(s); setTimeout(() => setCopied(""), 1500); }
 
   return (
     <div className="space-y-4">
@@ -52,7 +50,7 @@ export default function RandomStringGenerator() {
           {results.map((r, i) => (
             <li key={i} className="flex items-center justify-between bg-[var(--bg-subtle)] rounded-lg px-3 py-2 gap-2">
               <code className="text-sm text-[var(--text)] break-all">{r}</code>
-              <button onClick={() => copy(r)} className="btn-secondary text-xs py-1 px-2 min-h-0 shrink-0 flex items-center gap-1"><Copy size={12} />{copied === r ? "✓" : "Copy"}</button>
+              <CopyButton text={r} />
             </li>
           ))}
         </ul>

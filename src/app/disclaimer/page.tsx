@@ -32,21 +32,21 @@ export default function DisclaimerPage() {
 
       <div className="mb-10">
         <p className="section-label mb-3">Legal</p>
-        <h1 className="text-3xl md:text-4xl font-bold text-[var(--text)] mb-3">Disclaimer</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-semibold text-[var(--text)] mb-3">Disclaimer</h1>
         <p className="text-sm text-[var(--text-muted)]">Last updated: {lastUpdated}</p>
       </div>
 
       <div className="space-y-10 text-[var(--text-muted)] leading-relaxed">
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">General Disclaimer</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">General Disclaimer</h2>
           <p>
             The tools provided on ToolBrigade (toolbrigade.com) are for general utility purposes only. No representations or warranties of any kind are made about the completeness, accuracy, reliability, suitability, or availability of the tools or information on this website.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">Tool Accuracy</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">Tool Accuracy</h2>
           <p className="mb-3">
             Tools are designed to be accurate and useful, but should not be relied upon as the sole source of truth for critical decisions. Specifically:
           </p>
@@ -60,35 +60,35 @@ export default function DisclaimerPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">No Professional Advice</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">No Professional Advice</h2>
           <p>
             Nothing on ToolBrigade constitutes legal, financial, medical, or professional advice. Tools like the BMI Calculator, Age Calculator, or Date Difference Calculator are utilities only. Always consult a qualified professional for decisions that matter.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">Third-Party Libraries</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">Third-Party Libraries</h2>
           <p>
             Some tools use open-source third-party JavaScript libraries (e.g., pdf-lib, PDF.js, heic2any, qrcode, JsBarcode). These are used under their respective open-source licenses. ToolBrigade is not responsible for bugs, limitations, or behavior introduced by these libraries.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">External Links</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">External Links</h2>
           <p>
             ToolBrigade may contain links to external websites. These links are provided for convenience only. There is no control over the content of those sites and no responsibility is accepted for them or for any loss or damage that may arise from your use of them.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">Limitation of Liability</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">Limitation of Liability</h2>
           <p>
             In no event shall ToolBrigade be liable for any loss or damage including, without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website or its tools.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">Contact</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">Contact</h2>
           <p>
             Questions about this disclaimer? Contact{" "}
             <a href="mailto:legal@toolbrigade.com" className="text-[var(--brand)] hover:underline">

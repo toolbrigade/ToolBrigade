@@ -60,7 +60,7 @@ export default function ChangelogPage() {
         <span className="text-[var(--text)]">Changelog</span>
       </nav>
 
-      <h1 className="text-4xl font-bold text-[var(--text)] mb-4">Changelog</h1>
+      <h1 className="font-display text-4xl font-semibold text-[var(--text)] mb-4">Changelog</h1>
       <p className="text-[var(--text-muted)] mb-14">
         Every update, new tool, and fix — in one place.
       </p>
@@ -69,7 +69,7 @@ export default function ChangelogPage() {
         {changelog.map((release) => (
           <div key={release.version}>
             <div className="flex items-center gap-3 mb-5">
-              <span className="text-lg font-bold text-[var(--text)]">v{release.version}</span>
+              <span className="font-display text-lg font-semibold text-[var(--text)]">v{release.version}</span>
               <span className="text-xs text-[var(--text-muted)] bg-[var(--bg-subtle)] border border-[var(--border)] px-2.5 py-1 rounded-full">
                 {release.date}
               </span>

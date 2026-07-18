@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 const WORDS = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum".split(" ");
 
@@ -18,7 +18,6 @@ export default function LoremIpsum() {
   const [count, setCount] = useState(3);
   const [type, setType] = useState<"paragraphs" | "sentences" | "words">("paragraphs");
   const [output, setOutput] = useState("");
-  const [copied, setCopied] = useState(false);
 
   function generate() {
     let text = "";
@@ -27,8 +26,6 @@ export default function LoremIpsum() {
     else text = Array.from({ length: count }, () => WORDS[Math.floor(Math.random() * WORDS.length)]).join(" ");
     setOutput(text);
   }
-
-  function copy() { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500); }
 
   return (
     <div className="space-y-4">
@@ -50,7 +47,7 @@ export default function LoremIpsum() {
       {output && (
         <>
           <div className="flex justify-end">
-            <button onClick={copy} className="btn-secondary flex items-center gap-1 text-xs py-1 px-2 min-h-0"><Copy size={12} />{copied ? "Copied!" : "Copy"}</button>
+            <CopyButton text={output} />
           </div>
           <textarea className="textarea min-h-[240px]" readOnly value={output} />
         </>

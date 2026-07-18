@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { Copy, RefreshCw } from "lucide-react";
+import { RefreshCw } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 const SETS = { upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", lower: "abcdefghijklmnopqrstuvwxyz", digits: "0123456789", symbols: "!@#$%^&*()_+-=[]{}|;:,.<>?" };
 
@@ -18,7 +19,6 @@ export default function PasswordGenerator() {
   const [length, setLength] = useState(16);
   const [opts, setOpts] = useState({ upper: true, lower: true, digits: true, symbols: true });
   const [password, setPassword] = useState("");
-  const [copied, setCopied] = useState(false);
 
   function generate() {
     const pool = Object.entries(opts).filter(([, v]) => v).map(([k]) => SETS[k as keyof typeof SETS]).join("");
@@ -27,8 +27,6 @@ export default function PasswordGenerator() {
     crypto.getRandomValues(arr);
     setPassword(Array.from(arr).map(n => pool[n % pool.length]).join(""));
   }
-
-  function copy() { navigator.clipboard.writeText(password); setCopied(true); setTimeout(() => setCopied(false), 1500); }
 
   const s = password ? strength(password) : null;
 
@@ -53,7 +51,7 @@ export default function PasswordGenerator() {
         <>
           <div className="flex items-center gap-2 bg-[var(--bg-subtle)] rounded-lg px-4 py-3">
             <code className="flex-1 text-sm font-mono text-[var(--text)] break-all">{password}</code>
-            <button onClick={copy} className="btn-secondary text-xs py-1 px-2 min-h-0 shrink-0 flex items-center gap-1"><Copy size={12} />{copied ? "Copied!" : "Copy"}</button>
+            <CopyButton text={password} />
           </div>
           {s && (
             <div className="space-y-1">

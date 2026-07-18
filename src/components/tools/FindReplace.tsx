@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 export default function FindReplace() {
   const [input, setInput] = useState("");
@@ -8,7 +8,6 @@ export default function FindReplace() {
   const [replace, setReplace] = useState("");
   const [useRegex, setUseRegex] = useState(false);
   const [caseSensitive, setCaseSensitive] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   let output = input;
   let count = 0;
@@ -22,8 +21,6 @@ export default function FindReplace() {
       output = input.replace(pattern, replace);
     } catch (e) { renderError = (e as Error).message; output = input; }
   }
-
-  function copy() { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500); }
 
   return (
     <div className="space-y-4">
@@ -57,7 +54,7 @@ export default function FindReplace() {
         <div>
           <div className="flex justify-between items-center mb-1">
             <label className="text-xs font-medium text-[var(--text-muted)]">Output</label>
-            <button onClick={copy} className="btn-secondary flex items-center gap-1 text-xs py-1 px-2 min-h-0"><Copy size={12} />{copied ? "Copied!" : "Copy"}</button>
+            <CopyButton text={output} />
           </div>
           <textarea className="textarea min-h-[200px]" readOnly value={output} />
         </div>

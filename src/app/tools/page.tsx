@@ -26,7 +26,7 @@ export default function AllToolsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-[var(--text)] mb-2">All Tools</h1>
+        <h1 className="font-display text-3xl font-semibold text-[var(--text)] mb-2">All Tools</h1>
         <p className="text-[var(--text-muted)]">
           {tools.length} free tools — filter by category or search to find what you need.
         </p>

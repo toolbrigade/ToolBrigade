@@ -33,7 +33,7 @@ export default function AllToolsSection() {
 
   return (
     <section className="py-16 border-t border-[var(--border)]">
-      <h2 className="text-lg font-semibold text-[var(--text)] mb-10">All {tools.length} tools</h2>
+      <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-10">All {tools.length} tools</h2>
       <div className="space-y-14">
         {categories.map((cat) => {
           const catTools = tools.filter((t) => t.category === cat);
@@ -42,7 +42,7 @@ export default function AllToolsSection() {
             <div key={cat}>
               <div className="flex items-center gap-2 mb-5">
                 <CatIcon size={14} strokeWidth={2} className="text-[var(--text-muted)]" />
-                <h3 className="text-sm font-semibold text-[var(--text)]">{cat}</h3>
+                <h3 className="font-display text-sm font-semibold text-[var(--text)]">{cat}</h3>
                 <span className="text-xs text-[var(--text-subtle)]">— {catTools.length}</span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">

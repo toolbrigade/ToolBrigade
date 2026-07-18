@@ -1,16 +1,13 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 export default function TextRepeater() {
   const [input, setInput] = useState("");
   const [count, setCount] = useState(5);
   const [separator, setSeparator] = useState("\n");
-  const [copied, setCopied] = useState(false);
 
   const output = Array(count).fill(input).join(separator);
-  function copy() { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500); }
-
   const sepOptions = [{ label: "New line", value: "\n" }, { label: "Space", value: " " }, { label: "Comma", value: ", " }, { label: "None", value: "" }];
 
   return (
@@ -35,7 +32,7 @@ export default function TextRepeater() {
         <>
           <div className="flex justify-between items-center">
             <p className="text-xs text-[var(--text-muted)]">{output.length} characters</p>
-            <button onClick={copy} className="btn-secondary flex items-center gap-1 text-xs py-1 px-2 min-h-0"><Copy size={12} />{copied ? "Copied!" : "Copy"}</button>
+            <CopyButton text={output} />
           </div>
           <textarea className="textarea min-h-[160px]" readOnly value={output} />
         </>

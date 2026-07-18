@@ -34,7 +34,7 @@ export default function SuggestToolForm() {
           <Lightbulb size={28} strokeWidth={2.5} />
         </div>
         <p className="section-label mb-3">Suggest a Tool</p>
-        <h1 className="text-3xl md:text-4xl font-bold text-[var(--text)] mb-4">What should I build next?</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-semibold text-[var(--text)] mb-4">What should I build next?</h1>
         <p className="text-[var(--text-muted)] leading-relaxed">
           If there&apos;s a tool you keep wishing existed here, tell me what it is. I build based on what&apos;s actually useful.
         </p>

@@ -33,7 +33,7 @@ export default function PrivacyPage() {
 
       <div className="mb-10">
         <p className="section-label mb-3">Legal</p>
-        <h1 className="text-3xl md:text-4xl font-bold text-[var(--text)] mb-3">Privacy Policy</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-semibold text-[var(--text)] mb-3">Privacy Policy</h1>
         <p className="text-sm text-[var(--text-muted)]">Last updated: {lastUpdated}</p>
       </div>
 
@@ -46,14 +46,14 @@ export default function PrivacyPage() {
       <div className="prose-custom space-y-10 text-[var(--text-muted)] leading-relaxed">
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">1. What ToolBrigade Is</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">1. What ToolBrigade Is</h2>
           <p>
             ToolBrigade is a free browser-based tools site at <a href="https://toolbrigade.com" className="text-[var(--brand)] hover:underline">toolbrigade.com</a>, built and maintained by one developer.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">2. Data That Is NOT Collected</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">2. Data That Is NOT Collected</h2>
           <p className="mb-3">Because all tools run in your browser using JavaScript, the following is never collected, stored, or processed:</p>
           <ul className="space-y-2 list-none">
             {[
@@ -72,7 +72,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">3. Data That Is Collected</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">3. Data That Is Collected</h2>
           <p className="mb-3">Minimal, anonymous data is collected to operate and improve the site:</p>
           <div className="space-y-4">
             <div className="card">
@@ -91,14 +91,14 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">4. Cookies</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">4. Cookies</h2>
           <p>
             ToolBrigade uses minimal cookies. Analytics cookies are set to distinguish users and sessions. No advertising cookies, tracking pixels, or third-party marketing cookies are used. See the <Link href="/cookies" className="text-[var(--brand)] hover:underline">Cookie Policy</Link> for full details.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">5. Third-Party Services</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">5. Third-Party Services</h2>
           <p className="mb-3">The following third-party services are used:</p>
           <ul className="space-y-2 text-sm list-disc list-inside">
             <li><strong className="text-[var(--text)]">Analytics</strong> — anonymous usage data</li>
@@ -108,14 +108,14 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">6. Children&apos;s Privacy</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">6. Children&apos;s Privacy</h2>
           <p>
             ToolBrigade is not directed at children under 13. No personal information from children is knowingly collected. If you believe a child has provided personal information, contact me and it will be deleted promptly.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">7. Your Rights</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">7. Your Rights</h2>
           <p className="mb-3">
             Since minimal personal data is collected, there is little to request. However, you have the right to:
           </p>
@@ -128,14 +128,14 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">8. Changes to This Policy</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">8. Changes to This Policy</h2>
           <p>
             This Privacy Policy may be updated from time to time. Significant changes will be reflected by updating the &ldquo;Last updated&rdquo; date at the top of this page. Continued use of ToolBrigade after changes constitutes acceptance of the updated policy.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-bold text-[var(--text)] mb-3">9. Contact</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">9. Contact</h2>
           <p>
             Questions about this Privacy Policy? Contact{" "}
             <a href="mailto:privacy@toolbrigade.com" className="text-[var(--brand)] hover:underline">

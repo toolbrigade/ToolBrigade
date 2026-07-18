@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import CopyButton from "@/components/ui/CopyButton";
 
 function hexToRgb(hex: string) {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -51,9 +52,12 @@ export default function ColorConverter() {
             { label: "RGB Object", value: `r: ${rgb.r}, g: ${rgb.g}, b: ${rgb.b}` },
             { label: "HSL Object", value: `h: ${hsl.h}°, s: ${hsl.s}%, l: ${hsl.l}%` },
           ].map((item) => (
-            <div key={item.label} className="bg-[var(--bg-subtle)] rounded-lg p-3">
-              <p className="text-xs text-[var(--text-muted)] mb-1">{item.label}</p>
-              <p className="font-mono text-sm text-[var(--text)]">{item.value}</p>
+            <div key={item.label} className="bg-[var(--bg-subtle)] rounded-lg p-3 flex items-center justify-between gap-2">
+              <div>
+                <p className="text-xs text-[var(--text-muted)] mb-1">{item.label}</p>
+                <p className="font-mono text-sm text-[var(--text)]">{item.value}</p>
+              </div>
+              <CopyButton text={item.value} />
             </div>
           ))}
         </div>

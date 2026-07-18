@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import CopyButton from "@/components/ui/CopyButton";
 
 const conversions = [
   { label: "UPPERCASE", fn: (s: string) => s.toUpperCase() },
@@ -14,17 +15,9 @@ const conversions = [
 export default function CaseConverter() {
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
-  const [copied, setCopied] = useState(false);
 
   function convert(fn: (s: string) => string) {
     setResult(fn(text));
-    setCopied(false);
-  }
-
-  function copy() {
-    navigator.clipboard.writeText(result);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   }
 
   return (
@@ -46,9 +39,9 @@ export default function CaseConverter() {
       <div className="relative">
         <textarea className="textarea min-h-[120px]" readOnly value={result} />
         {result && (
-          <button onClick={copy} className="absolute top-2 right-2 btn-secondary text-xs px-3 py-1 min-h-[32px]">
-            {copied ? "Copied!" : "Copy"}
-          </button>
+          <div className="absolute top-2 right-2">
+            <CopyButton text={result} />
+          </div>
         )}
       </div>
     </div>

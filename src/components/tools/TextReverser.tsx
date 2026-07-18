@@ -1,17 +1,14 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 export default function TextReverser() {
   const [input, setInput] = useState("");
   const [mode, setMode] = useState<"chars" | "words" | "lines">("chars");
-  const [copied, setCopied] = useState(false);
 
   const output = mode === "chars" ? input.split("").reverse().join("")
     : mode === "words" ? input.split(/\s+/).reverse().join(" ")
     : input.split("\n").reverse().join("\n");
-
-  function copy() { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500); }
 
   return (
     <div className="space-y-4">
@@ -30,7 +27,7 @@ export default function TextReverser() {
         <div>
           <div className="flex justify-between items-center mb-1">
             <label className="text-xs font-medium text-[var(--text-muted)]">Reversed</label>
-            <button onClick={copy} className="btn-secondary flex items-center gap-1 text-xs py-1 px-2 min-h-0"><Copy size={12} />{copied ? "Copied!" : "Copy"}</button>
+            <CopyButton text={output} />
           </div>
           <textarea className="textarea min-h-[200px]" readOnly value={output} />
         </div>

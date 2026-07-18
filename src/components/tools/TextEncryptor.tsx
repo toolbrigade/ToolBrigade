@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 function caesar(text: string, shift: number) {
   return text.replace(/[a-zA-Z]/g, c => {
@@ -14,7 +14,6 @@ export default function TextEncryptor() {
   const [method, setMethod] = useState<"caesar" | "base64" | "rot13">("caesar");
   const [shift, setShift] = useState(13);
   const [mode, setMode] = useState<"encrypt" | "decrypt">("encrypt");
-  const [copied, setCopied] = useState(false);
 
   let output = "";
   try {
@@ -22,8 +21,6 @@ export default function TextEncryptor() {
     else if (method === "rot13") output = caesar(input, 13);
     else if (method === "base64") output = mode === "encrypt" ? btoa(unescape(encodeURIComponent(input))) : decodeURIComponent(escape(atob(input)));
   } catch { output = "Invalid input for decoding."; }
-
-  function copy() { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500); }
 
   return (
     <div className="space-y-4">
@@ -52,7 +49,7 @@ export default function TextEncryptor() {
         <div>
           <div className="flex justify-between items-center mb-1">
             <label className="text-xs font-medium text-[var(--text-muted)]">Output</label>
-            <button onClick={copy} className="btn-secondary flex items-center gap-1 text-xs py-1 px-2 min-h-0"><Copy size={12} />{copied ? "Copied!" : "Copy"}</button>
+            <CopyButton text={output} />
           </div>
           <textarea className="textarea min-h-[160px]" readOnly value={output} />
         </div>

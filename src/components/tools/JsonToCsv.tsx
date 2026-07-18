@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Download } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 export default function JsonToCsv() {
   const [input, setInput] = useState("");
@@ -33,8 +34,11 @@ export default function JsonToCsv() {
           <textarea className="textarea min-h-[240px]" placeholder='[{"name":"Alice","age":30}]' value={input} onChange={e => setInput(e.target.value)} />
         </div>
         <div>
-          <label className="text-xs font-medium text-[var(--text-muted)] mb-1 block">CSV output</label>
-          <textarea className="textarea min-h-[240px]" value={output} placeholder="CSV appears here…" onChange={() => {}} />
+          <div className="flex justify-between items-center mb-1">
+            <label className="text-xs font-medium text-[var(--text-muted)]">CSV output</label>
+            <CopyButton text={output} />
+          </div>
+          <textarea className="textarea min-h-[240px]" value={output} placeholder="CSV appears here…" readOnly />
         </div>
       </div>
       {error && <p className="text-sm text-red-500">{error}</p>}

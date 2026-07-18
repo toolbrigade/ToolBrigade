@@ -1,11 +1,10 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 export default function TextBinaryConverter() {
   const [input, setInput] = useState("");
   const [mode, setMode] = useState<"encode" | "decode">("encode");
-  const [copied, setCopied] = useState(false);
 
   let output = "";
   let error = "";
@@ -16,8 +15,6 @@ export default function TextBinaryConverter() {
       output = input.trim().split(/\s+/).filter(Boolean).map(b => String.fromCharCode(parseInt(b, 2))).join("");
     }
   } catch { error = "Invalid binary input."; }
-
-  function copy() { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500); }
 
   return (
     <div className="space-y-4">
@@ -33,7 +30,7 @@ export default function TextBinaryConverter() {
         <div>
           <div className="flex justify-between items-center mb-1">
             <label className="text-xs font-medium text-[var(--text-muted)]">{mode === "encode" ? "Binary" : "Text"}</label>
-            <button onClick={copy} className="btn-secondary flex items-center gap-1 text-xs py-1 px-2 min-h-0"><Copy size={12} />{copied ? "Copied!" : "Copy"}</button>
+            <CopyButton text={error || output} />
           </div>
           <textarea className="textarea min-h-[200px]" readOnly value={error || output} />
         </div>

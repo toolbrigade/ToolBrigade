@@ -33,36 +33,28 @@ export const metadata: Metadata = {
   },
 };
 
-const categoryMeta: Record<string, { icon: React.ElementType; description: string }> = {
-  Text: {
-    icon: FileText,
-    description: "Word counters, case converters, diff checkers & more",
-  },
-  Code: {
-    icon: Code2,
-    description: "JSON, Base64, UUID, regex, hash generators & more",
-  },
-  Image: {
-    icon: Image,
-    description: "Resize, compress, convert, crop & edit images",
-  },
-  PDF: {
-    icon: FileDown,
-    description: "Merge, split, compress, rotate & edit PDFs",
-  },
-  Converter: {
-    icon: Wrench,
-    description: "Units, currencies, dates, numbers & more",
-  },
-  Misc: {
-    icon: Sparkles,
-    description: "QR codes, passwords, gradients, palettes & more",
-  },
+const categoryMeta: Record<string, { icon: React.ElementType; count: number }> = {
+  Text:      { icon: FileText, count: 21 },
+  Code:      { icon: Code2,    count: 14 },
+  Converter: { icon: Wrench,   count: 15 },
+  Image:     { icon: Image,    count: 20 },
+  PDF:       { icon: FileDown, count: 12 },
+  Misc:      { icon: Sparkles, count: 10 },
 };
 
-
-
-const featuredTools = tools.slice(0, 8);
+const featuredSlugs = [
+  "word-counter",
+  "case-converter",
+  "json-formatter",
+  "base64-encoder",
+  "url-encoder",
+  "px-to-rem",
+  "color-converter",
+  "image-resizer",
+];
+const featuredTools = featuredSlugs
+  .map((slug) => tools.find((t) => t.slug === slug))
+  .filter(Boolean) as typeof tools;
 
 const websiteSchema = {
   "@context": "https://schema.org",
@@ -80,34 +72,38 @@ const websiteSchema = {
 export default function HomePage() {
   return (
     <div>
-      {/* ── Hero ── */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+
+      {/* ── Hero ── */}
       <section className="relative overflow-hidden border-b border-[var(--border)]">
+        {/* Subtle dot grid */}
         <div
-          className="absolute inset-0 opacity-[0.025] dark:opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
           style={{
-            backgroundImage: `radial-gradient(var(--border) 1px, transparent 1px)`,
-            backgroundSize: "24px 24px",
+            backgroundImage: `radial-gradient(var(--text) 1px, transparent 1px)`,
+            backgroundSize: "28px 28px",
           }}
         />
         <div className="relative max-w-7xl mx-auto px-4 pt-20 md:pt-28 pb-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[var(--text)] mb-5 leading-[1.1]">
-            Browser tools that just{" "}
-            <span className="text-[var(--brand)]">work.</span>
+          <p className="section-label mb-5">92+ free browser tools</p>
+          <h1 className="font-display text-5xl md:text-7xl font-semibold tracking-tight text-[var(--text)] mb-6 leading-[1.05]">
+            Browser tools that<br className="hidden sm:block" />{" "}
+            just <span className="text-[var(--brand)]">work.</span>
           </h1>
           <p className="text-lg md:text-xl text-[var(--text-muted)] mb-10 max-w-2xl mx-auto leading-relaxed">
             {tools.length}+ free utilities for text, images, PDFs, code, and conversions. No signup, no uploads to random servers, no &ldquo;start your free trial.&rdquo; Runs in your browser. Free forever.
           </p>
           <HomeSearch />
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
             <Link href="/tools" className="btn-primary">
-              Browse All Tools <ArrowRight size={16} />
+              Browse All Tools <ArrowRight size={16} strokeWidth={1.75} />
             </Link>
             <Link href="/about" className="btn-secondary">
-              Why I built this
+              Learn More
             </Link>
           </div>
-          {/* category pills inside hero */}
+
+          {/* Category quick-nav strip */}
           <div className="flex flex-wrap justify-center gap-2 pb-10">
             {categories.map((cat) => {
               const meta = categoryMeta[cat];
@@ -117,9 +113,9 @@ export default function HomePage() {
                 <Link
                   key={cat}
                   href={`/tools?category=${cat}`}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--bg-card)] hover:border-[var(--brand)] hover:text-[var(--brand)] text-[var(--text-muted)] text-xs font-medium transition-colors group"
+                  className="pill pill-inactive inline-flex items-center gap-1.5 text-xs"
                 >
-                  <CatIcon size={12} strokeWidth={2} className="group-hover:text-[var(--brand)] transition-colors" />
+                  <CatIcon size={12} strokeWidth={1.75} />
                   {cat}
                   <span className="text-[var(--text-subtle)]">{count}</span>
                 </Link>
@@ -131,12 +127,12 @@ export default function HomePage() {
 
       <div className="max-w-7xl mx-auto px-4">
 
-        {/* ── Featured Tools ── */}
+        {/* ── Popular right now ── */}
         <section className="py-14">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-lg font-semibold text-[var(--text)]">Popular right now</h2>
+            <h2 className="font-display text-xl font-semibold text-[var(--text)]">Popular right now</h2>
             <Link href="/tools" className="btn-ghost text-sm">
-              All tools <ArrowRight size={14} />
+              All tools <ArrowRight size={14} strokeWidth={1.75} />
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -144,16 +140,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Why this exists — full-width break ── */}
       </div>
+
+      {/* ── Why this exists ── */}
       <section className="border-y border-[var(--border)] bg-[var(--bg-subtle)] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center">
 
-            {/* left — statement */}
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-[var(--brand)] mb-4">Why this exists</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-[var(--text)] leading-tight mb-6">
+              <p className="section-label mb-4">Why this exists</p>
+              <h2 className="font-display text-3xl md:text-4xl font-semibold text-[var(--text)] leading-tight mb-6">
                 Most tool sites are a tax on your time.
               </h2>
               <p className="text-[var(--text-muted)] leading-relaxed mb-4">
@@ -162,12 +158,12 @@ export default function HomePage() {
               <p className="text-[var(--text-muted)] leading-relaxed mb-8">
                 ToolBrigade runs everything in your browser. Nothing leaves your device. No account, no paywall, no &ldquo;upgrade to pro.&rdquo;
               </p>
-              <Link href="/tools" className="inline-flex items-center gap-2 btn-primary">
-                Browse all {tools.length} tools <ArrowRight size={16} />
+              <Link href="/tools" className="btn-primary inline-flex items-center gap-2">
+                Browse all {tools.length} tools <ArrowRight size={16} strokeWidth={1.75} />
               </Link>
             </div>
 
-            {/* right — 4 points */}
+            {/* Feature grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[var(--border)] rounded-xl overflow-hidden border border-[var(--border)]">
               {[
                 { title: "No account", body: "Open a tool and use it. That's it. No email, no password, no profile." },
@@ -176,7 +172,7 @@ export default function HomePage() {
                 { title: "No nonsense", body: "No cookie banners chasing you around. No ads. No dark patterns." },
               ].map((item) => (
                 <div key={item.title} className="bg-[var(--bg-card)] px-6 py-6">
-                  <p className="font-semibold text-[var(--text)] mb-1">{item.title}</p>
+                  <p className="font-display font-semibold text-[var(--text)] mb-1.5">{item.title}</p>
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">{item.body}</p>
                 </div>
               ))}
@@ -185,12 +181,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <div className="max-w-7xl mx-auto px-4">
 
+      <div className="max-w-7xl mx-auto px-4">
         {/* ── All tools by category ── */}
         <AllToolsSection />
       </div>
     </div>
   );
 }
-

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 async function hash(algo: string, text: string): Promise<string> {
   const buf = await crypto.subtle.digest(algo, new TextEncoder().encode(text));
@@ -10,7 +10,6 @@ async function hash(algo: string, text: string): Promise<string> {
 export default function HashGenerator() {
   const [input, setInput] = useState("");
   const [hashes, setHashes] = useState<Record<string, string>>({});
-  const [copied, setCopied] = useState("");
 
   async function generate() {
     const [sha1, sha256, sha512] = await Promise.all([
@@ -20,10 +19,6 @@ export default function HashGenerator() {
     ]);
     setHashes({ "SHA-1": sha1, "SHA-256": sha256, "SHA-512": sha512 });
   }
-
-  function copy(s: string) { navigator.clipboard.writeText(s); setCopied(s); setTimeout(() => setCopied(""), 1500); }
-
-  function handleInput(val: string) { setInput(val); }
 
   return (
     <div className="space-y-4">
@@ -36,8 +31,8 @@ export default function HashGenerator() {
           className="textarea min-h-[100px]"
           placeholder="Enter text to hash…"
           value={input}
-          onChange={e => handleInput(e.target.value)}
-          onInput={e => handleInput((e.target as HTMLTextAreaElement).value)}
+          onChange={e => setInput(e.target.value)}
+          onInput={e => setInput((e.target as HTMLTextAreaElement).value)}
         />
       </div>
       <button onClick={generate} disabled={!input} className="btn-primary">Generate Hashes</button>
@@ -46,7 +41,7 @@ export default function HashGenerator() {
           <label className="text-xs font-medium text-[var(--text-muted)]">{algo}</label>
           <div className="flex items-center gap-2 bg-[var(--bg-subtle)] rounded-lg px-3 py-2">
             <code className="text-xs font-mono text-[var(--text)] break-all flex-1">{val}</code>
-            <button onClick={() => copy(val)} className="btn-secondary text-xs py-1 px-2 min-h-0 shrink-0 flex items-center gap-1"><Copy size={12} />{copied === val ? "✓" : "Copy"}</button>
+            <CopyButton text={val} />
           </div>
         </div>
       ))}

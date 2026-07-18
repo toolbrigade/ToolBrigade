@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-24 text-center">
       <p className="text-8xl font-bold text-[var(--border)] mb-6">404</p>
-      <h1 className="text-2xl font-bold text-[var(--text)] mb-3">This page doesn&apos;t exist</h1>
+      <h1 className="font-display text-2xl font-semibold text-[var(--text)] mb-3">This page doesn&apos;t exist</h1>
       <p className="text-[var(--text-muted)] mb-10">
         It may have been moved or the URL might be wrong.
       </p>

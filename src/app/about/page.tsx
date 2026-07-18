@@ -37,23 +37,26 @@ export default function AboutPage() {
   return (
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+
       {/* ── Hero ── */}
       <section className="border-b border-[var(--border)]">
         <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
           <nav className="text-sm text-[var(--text-muted)] mb-10 flex items-center gap-2">
-            <Link href="/" className="hover:text-[var(--text)] transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[var(--brand)] transition-colors">Home</Link>
             <span>/</span>
             <span className="text-[var(--text)]">About</span>
           </nav>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-[var(--text)] tracking-tight mb-6 leading-tight">
+              <h1 className="font-display text-4xl md:text-5xl font-semibold text-[var(--text)] tracking-tight mb-6 leading-tight">
                 Built by one person.<br />Used by everyone.
               </h1>
               <p className="text-lg text-[var(--text-muted)] leading-relaxed">
                 ToolBrigade is a free collection of browser-based utilities. No accounts, no uploads, no ads. Just tools that work — built because the alternatives were genuinely bad.
               </p>
             </div>
+
+            {/* Stats grid */}
             <div className="grid grid-cols-2 gap-px bg-[var(--border)] rounded-xl overflow-hidden border border-[var(--border)]">
               {[
                 { value: `${tools.length}+`, label: "Free tools" },
@@ -62,7 +65,7 @@ export default function AboutPage() {
                 { value: "0", label: "Servers touched" },
               ].map((s) => (
                 <div key={s.label} className="bg-[var(--bg-card)] px-6 py-7 text-center">
-                  <p className="text-3xl font-bold text-[var(--text)] mb-1">{s.value}</p>
+                  <p className="font-display text-3xl font-semibold text-[var(--brand)] mb-1">{s.value}</p>
                   <p className="text-xs text-[var(--text-muted)]">{s.label}</p>
                 </div>
               ))}
@@ -71,12 +74,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Story ── */}
+      {/* ── Why this exists ── */}
       <section className="border-b border-[var(--border)] bg-[var(--bg-subtle)]">
         <div className="max-w-7xl mx-auto px-4 py-16 md:py-20">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-[var(--text)] mb-6">Why this exists</h2>
+              <h2 className="font-display text-2xl md:text-3xl font-semibold text-[var(--text)] mb-6">Why this exists</h2>
               <div className="space-y-4 text-[var(--text-muted)] leading-relaxed">
                 <p>
                   Most tool sites are genuinely bad. You search for something simple — convert a PNG, format some JSON, generate a QR code — and you get: a cookie banner, an ad that covers the page, a forced account signup, and then your file gets uploaded to a server you&apos;ve never heard of. For a PNG conversion.
@@ -89,6 +92,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
+
             <div className="space-y-6 md:pt-2">
               {[
                 {
@@ -109,9 +113,9 @@ export default function AboutPage() {
                 },
               ].map((item) => (
                 <div key={item.title} className="flex gap-4">
-                  <div className="w-px bg-[var(--brand)] shrink-0 mt-1 rounded-full" />
+                  <div className="w-0.5 bg-[var(--brand)] shrink-0 mt-1 rounded-full" />
                   <div>
-                    <p className="font-semibold text-[var(--text)] mb-1">{item.title}</p>
+                    <p className="font-display font-semibold text-[var(--text)] mb-1">{item.title}</p>
                     <p className="text-sm text-[var(--text-muted)] leading-relaxed">{item.body}</p>
                   </div>
                 </div>
@@ -121,12 +125,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Builder note ── */}
+      {/* ── Who built this ── */}
       <section className="border-b border-[var(--border)]">
         <div className="max-w-7xl mx-auto px-4 py-16 md:py-20">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-[var(--text)] mb-5">Who built this</h2>
+              <h2 className="font-display text-2xl md:text-3xl font-semibold text-[var(--text)] mb-5">Who built this</h2>
               <p className="text-[var(--text-muted)] leading-relaxed mb-5">
                 Just me — one developer. Not a team, not a startup, not a product with a roadmap and a funding announcement. I built it because I needed it, and I keep improving it because people use it.
               </p>
@@ -134,12 +138,24 @@ export default function AboutPage() {
                 I add tools when I build them or when someone suggests something worth adding. No roadmap theatre. No &ldquo;coming soon&rdquo; pages for features that never ship.
               </p>
             </div>
-            <div className="card border-[var(--border)] p-8 flex flex-col gap-4">
-              <p className="text-[var(--text-muted)] text-sm italic leading-relaxed">
+
+            {/* Pull-quote block */}
+            <div
+              className="rounded-xl p-8 border border-[var(--border)] bg-[var(--bg-card)]"
+              style={{ borderLeftWidth: "3px", borderLeftColor: "var(--brand)" }}
+            >
+              <p className="text-[var(--text-muted)] text-base italic leading-relaxed mb-6">
                 &ldquo;I got tired of Googling a simple tool, landing on a site that wants my email, shows me three ads, and then uploads my file to some random server in Ohio. For a Base64 decode. Come on.&rdquo;
               </p>
-              <div className="h-px bg-[var(--border)]" />
-              <p className="text-xs text-[var(--text-subtle)]">— The developer, probably at 2am</p>
+              <div className="flex items-center gap-3">
+                <div className="h-px flex-1 bg-[var(--border)]" />
+                <p
+                  className="text-sm text-[var(--text-subtle)] -rotate-1"
+                  style={{ fontFamily: "var(--font-fraunces), Georgia, serif", fontStyle: "italic" }}
+                >
+                  — The developer, probably at 2am
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -150,7 +166,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 py-14">
           <div className="flex flex-wrap gap-3">
             <Link href="/tools" className="btn-primary">
-              Explore all {tools.length} tools <ArrowRight size={15} />
+              Explore all {tools.length} tools <ArrowRight size={15} strokeWidth={1.75} />
             </Link>
             <Link href="/contact" className="btn-secondary">Get in touch</Link>
             <Link href="/suggest-tool" className="btn-secondary">Suggest a tool</Link>

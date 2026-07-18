@@ -1,18 +1,15 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 export default function TextToHtml() {
   const [input, setInput] = useState("");
   const [wrapTag, setWrapTag] = useState<"p" | "div" | "span">("p");
-  const [copied, setCopied] = useState(false);
 
   const output = input.split("\n\n").filter(p => p.trim()).map(p => {
     const escaped = p.trim().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br>");
     return `<${wrapTag}>${escaped}</${wrapTag}>`;
   }).join("\n");
-
-  function copy() { navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 1500); }
 
   return (
     <div className="space-y-4">
@@ -25,12 +22,12 @@ export default function TextToHtml() {
       <div className="grid md:grid-cols-2 gap-4">
         <div>
           <label className="text-xs font-medium text-[var(--text-muted)] mb-1 block">Plain text (blank line = new paragraph)</label>
-          <textarea className="textarea min-h-[240px]" placeholder="First paragraph.&#10;&#10;Second paragraph." value={input} onChange={e => setInput(e.target.value)} />
+          <textarea className="textarea min-h-[240px]" placeholder={"First paragraph.\n\nSecond paragraph."} value={input} onChange={e => setInput(e.target.value)} />
         </div>
         <div>
           <div className="flex justify-between items-center mb-1">
             <label className="text-xs font-medium text-[var(--text-muted)]">HTML</label>
-            <button onClick={copy} className="btn-secondary flex items-center gap-1 text-xs py-1 px-2 min-h-0"><Copy size={12} />{copied ? "Copied!" : "Copy"}</button>
+            <CopyButton text={output} />
           </div>
           <textarea className="textarea min-h-[240px]" readOnly value={output} />
         </div>

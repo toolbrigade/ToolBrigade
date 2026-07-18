@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import CopyButton from "@/components/ui/CopyButton";
 
 export default function UrlEncoderDecoder() {
   const [input, setInput] = useState("");
@@ -45,7 +46,10 @@ export default function UrlEncoderDecoder() {
           />
         </div>
         <div>
-          <label className="text-xs font-medium text-[var(--text-muted)] mb-1 block">Output</label>
+          <div className="flex justify-between items-center mb-1">
+            <label className="text-xs font-medium text-[var(--text-muted)]">Output</label>
+            <CopyButton text={output} />
+          </div>
           <textarea className="textarea min-h-[180px]" readOnly value={output} placeholder="Result appears here…" />
         </div>
       </div>

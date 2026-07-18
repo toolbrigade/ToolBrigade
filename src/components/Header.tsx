@@ -1,13 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import {
   ChevronDown, Moon, Sun, Menu, X, Search,
-  FileText, Code2, Image as ImageIcon, FileDown, Wrench, HelpCircle,
-  Info, Mail, BookOpen, Shield, ScrollText, Sparkles,
+  FileText, Code2, Image as ImageIcon, FileDown, Wrench, Sparkles,
 } from "lucide-react";
 import { categories, tools } from "@/config/tools";
 
@@ -89,13 +87,12 @@ export default function Header() {
     : [];
 
   return (
-    <header className="sticky top-0 z-50 bg-[var(--bg)]/90 border-b border-[var(--border)] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 bg-[var(--bg)]/95 border-b border-[var(--border)] backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-          <Image src="/logo.png" alt="ToolBrigade" width={32} height={32} className="w-8 h-8 rounded-lg" priority />
-          <span className="font-bold text-lg tracking-tight text-[var(--text)]">
+          <span className="font-display font-semibold text-xl tracking-tight text-[var(--text)]">
             Tool<span className="text-[var(--brand)]">Brigade</span>
           </span>
         </Link>
@@ -108,7 +105,7 @@ export default function Header() {
               href={link.href}
               className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                 pathname === link.href
-                  ? "text-[var(--brand)] bg-[var(--brand-light)] dark:bg-[var(--brand-light)]"
+                  ? "text-[var(--brand)] bg-[var(--brand-light)]"
                   : "text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)]"
               }`}
             >
@@ -122,7 +119,7 @@ export default function Header() {
               onClick={() => setCatOpen((v) => !v)}
               className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors min-h-[44px] ${
                 catOpen
-                  ? "text-[var(--brand)] bg-[var(--brand-light)] dark:bg-[var(--brand-light)]"
+                  ? "text-[var(--brand)] bg-[var(--brand-light)]"
                   : "text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)]"
               }`}
             >
@@ -131,7 +128,7 @@ export default function Header() {
             </button>
 
             {catOpen && (
-              <div className="absolute top-full left-0 mt-2 w-64 bg-[var(--bg-card)] border border-[var(--border)] rounded-lg shadow-xl shadow-black/10 dark:shadow-black/40 py-2 z-50 animate-fade-in">
+              <div className="absolute top-full left-0 mt-2 w-64 bg-[var(--bg-card)] border border-[var(--border)] rounded-xl shadow-xl shadow-black/10 dark:shadow-black/40 py-2 z-50 animate-fade-in">
                 <p className="px-4 py-2 text-xs font-semibold uppercase tracking-widest text-[var(--text-subtle)]">
                   Browse by Category
                 </p>
@@ -145,8 +142,8 @@ export default function Header() {
                       onClick={() => setCatOpen(false)}
                       className="flex items-center gap-3 px-4 py-2.5 text-sm text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)] transition-colors"
                     >
-                      <div className="w-7 h-7 rounded-lg bg-[var(--brand-light)] dark:bg-[var(--brand-light)] flex items-center justify-center text-[var(--brand)] shrink-0">
-                        <CatIcon size={14} strokeWidth={2.5} />
+                      <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ background: "var(--brand-light)", color: "var(--brand)" }}>
+                        <CatIcon size={13} strokeWidth={1.75} />
                       </div>
                       <span className="flex-1">{cat}</span>
                       <span className="text-xs text-[var(--text-subtle)] bg-[var(--bg-subtle)] px-2 py-0.5 rounded-full">
@@ -169,7 +166,7 @@ export default function Header() {
               className="btn-ghost text-sm hidden sm:flex"
               aria-label="Search tools"
             >
-              <Search size={16} />
+              <Search size={16} strokeWidth={1.75} />
               <span className="hidden lg:inline text-[var(--text-subtle)]">Search tools…</span>
               <kbd className="hidden lg:inline text-xs bg-[var(--bg-subtle)] border border-[var(--border)] px-1.5 py-0.5 rounded font-mono">
                 ⌘K
@@ -177,9 +174,9 @@ export default function Header() {
             </button>
 
             {searchOpen && (
-              <div className="absolute right-0 top-full mt-2 w-80 bg-[var(--bg-card)] border border-[var(--border)] rounded-lg shadow-xl shadow-black/10 dark:shadow-black/40 z-50 overflow-hidden animate-fade-in">
+              <div className="absolute right-0 top-full mt-2 w-80 bg-[var(--bg-card)] border border-[var(--border)] rounded-xl shadow-xl shadow-black/10 dark:shadow-black/40 z-50 overflow-hidden animate-fade-in">
                 <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--border)]">
-                  <Search size={16} className="text-[var(--text-muted)] shrink-0" />
+                  <Search size={15} strokeWidth={1.75} className="text-[var(--text-muted)] shrink-0" />
                   <input
                     ref={searchInputRef}
                     type="text"
@@ -204,7 +201,7 @@ export default function Header() {
                             onClick={() => { setSearchOpen(false); setQuery(""); }}
                             className="flex items-center gap-3 px-4 py-2.5 hover:bg-[var(--bg-subtle)] transition-colors"
                           >
-                            <div className="w-7 h-7 rounded-lg bg-[var(--brand-light)] dark:bg-[var(--brand-light)] flex items-center justify-center text-[var(--brand)] shrink-0 text-xs font-bold">
+                            <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold" style={{ background: "var(--brand-light)", color: "var(--brand)" }}>
                               {t.name[0]}
                             </div>
                             <div>
@@ -231,7 +228,7 @@ export default function Header() {
             className="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--bg-subtle)] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Toggle dark mode"
           >
-            {dark ? <Sun size={17} /> : <Moon size={17} />}
+            {dark ? <Sun size={17} strokeWidth={1.75} /> : <Moon size={17} strokeWidth={1.75} />}
           </button>
 
           {/* Mobile menu */}
@@ -240,7 +237,7 @@ export default function Header() {
             className="md:hidden p-2 rounded-lg text-[var(--text-muted)] hover:bg-[var(--bg-subtle)] transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileOpen ? <X size={18} strokeWidth={1.75} /> : <Menu size={18} strokeWidth={1.75} />}
           </button>
         </div>
       </div>
@@ -248,9 +245,8 @@ export default function Header() {
       {/* Mobile Nav */}
       {mobileOpen && (
         <div className="md:hidden border-t border-[var(--border)] bg-[var(--bg)] px-4 py-4 flex flex-col gap-1 animate-slide-up">
-          {/* Mobile search */}
           <div className="relative mb-2">
-            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
+            <Search size={15} strokeWidth={1.75} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
             <input
               type="text"
               placeholder="Search tools…"
@@ -265,7 +261,7 @@ export default function Header() {
               href={link.href}
               className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                 pathname === link.href
-                  ? "text-[var(--brand)] bg-[var(--brand-light)] dark:bg-[var(--brand-light)]"
+                  ? "text-[var(--brand)] bg-[var(--brand-light)]"
                   : "text-[var(--text-muted)] hover:bg-[var(--bg-subtle)]"
               }`}
             >
@@ -286,33 +282,12 @@ export default function Header() {
                     href={`/tools?category=${cat}`}
                     className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-[var(--text-muted)] hover:bg-[var(--bg-subtle)] transition-colors"
                   >
-                    <CatIcon size={14} strokeWidth={2.5} className="text-[var(--brand)]" />
+                    <CatIcon size={13} strokeWidth={1.75} className="text-[var(--brand)]" />
                     {cat}
                   </Link>
                 );
               })}
             </div>
-          </div>
-
-          <div className="pt-2 border-t border-[var(--border)] mt-1 grid grid-cols-2 gap-1">
-            <Link href="/about" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-[var(--text-muted)] hover:bg-[var(--bg-subtle)]">
-              <Info size={14} /> About
-            </Link>
-            <Link href="/help" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-[var(--text-muted)] hover:bg-[var(--bg-subtle)]">
-              <HelpCircle size={14} /> Help Center
-            </Link>
-            <Link href="/contact" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-[var(--text-muted)] hover:bg-[var(--bg-subtle)]">
-              <Mail size={14} /> Contact
-            </Link>
-            <Link href="/changelog" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-[var(--text-muted)] hover:bg-[var(--bg-subtle)]">
-              <BookOpen size={14} /> Changelog
-            </Link>
-            <Link href="/privacy" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-[var(--text-muted)] hover:bg-[var(--bg-subtle)]">
-              <Shield size={14} /> Privacy
-            </Link>
-            <Link href="/terms" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-[var(--text-muted)] hover:bg-[var(--bg-subtle)]">
-              <ScrollText size={14} /> Terms
-            </Link>
           </div>
         </div>
       )}

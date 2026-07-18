@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Copy } from "lucide-react";
+import CopyButton from "@/components/ui/CopyButton";
 
 function uuid(): string {
   if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID();
@@ -13,11 +13,14 @@ function uuid(): string {
 export default function UuidGenerator() {
   const [count, setCount] = useState(5);
   const [uuids, setUuids] = useState<string[]>([]);
-  const [copied, setCopied] = useState("");
+  const [copiedAll, setCopiedAll] = useState(false);
 
   function generate() { setUuids(Array.from({ length: count }, uuid)); }
-  function copy(s: string) { navigator.clipboard.writeText(s); setCopied(s); setTimeout(() => setCopied(""), 1500); }
-  function copyAll() { navigator.clipboard.writeText(uuids.join("\n")); setCopied("all"); setTimeout(() => setCopied(""), 1500); }
+  function copyAll() {
+    navigator.clipboard.writeText(uuids.join("\n"));
+    setCopiedAll(true);
+    setTimeout(() => setCopiedAll(false), 1800);
+  }
 
   return (
     <div className="space-y-4">
@@ -29,14 +32,18 @@ export default function UuidGenerator() {
             onInput={e => setCount(+(e.target as HTMLInputElement).value)} />
         </div>
         <button onClick={generate} className="btn-primary">Generate</button>
-        {uuids.length > 0 && <button onClick={copyAll} className="btn-secondary text-sm">{copied === "all" ? "Copied all!" : "Copy all"}</button>}
+        {uuids.length > 0 && (
+          <button onClick={copyAll} className="btn-secondary text-sm">
+            {copiedAll ? "Copied all!" : "Copy all"}
+          </button>
+        )}
       </div>
       {uuids.length > 0 && (
         <ul className="space-y-2">
           {uuids.map((u, i) => (
             <li key={i} className="flex items-center justify-between bg-[var(--bg-subtle)] rounded-lg px-3 py-2 gap-2">
               <code className="text-sm font-mono text-[var(--text)]">{u}</code>
-              <button onClick={() => copy(u)} className="btn-secondary text-xs py-1 px-2 min-h-0 shrink-0 flex items-center gap-1"><Copy size={12} />{copied === u ? "✓" : "Copy"}</button>
+              <CopyButton text={u} />
             </li>
           ))}
         </ul>

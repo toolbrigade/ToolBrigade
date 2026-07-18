@@ -75,14 +75,14 @@ export default function HelpPage() {
         <span className="text-[var(--text)]">Help Center</span>
       </nav>
 
-      <h1 className="text-4xl font-bold text-[var(--text)] mb-4">Help Center</h1>
+      <h1 className="font-display text-4xl font-semibold text-[var(--text)] mb-4">Help Center</h1>
       <p className="text-[var(--text-muted)] leading-relaxed mb-14">
         Answers to common questions. If you can&apos;t find what you need, <Link href="/contact" className="text-[var(--brand)] hover:underline">get in touch</Link>.
       </p>
 
       {/* Getting started */}
       <section className="mb-14">
-        <h2 className="text-xl font-bold text-[var(--text)] mb-6">Getting started</h2>
+        <h2 className="font-display text-xl font-semibold text-[var(--text)] mb-6">Getting started</h2>
         <div className="space-y-px border border-[var(--border)] rounded-xl overflow-hidden">
           {[
             { n: "1", title: "No setup needed", desc: "Just open toolbrigade.com in any modern browser. No downloads, no extensions, no accounts." },
@@ -103,7 +103,7 @@ export default function HelpPage() {
 
       {/* Privacy */}
       <section className="mb-14">
-        <h2 className="text-xl font-bold text-[var(--text)] mb-4">Privacy & security</h2>
+        <h2 className="font-display text-xl font-semibold text-[var(--text)] mb-4">Privacy & security</h2>
         <p className="text-[var(--text-muted)] leading-relaxed mb-3">
           <strong className="text-[var(--text)]">Your data never leaves your device.</strong> Every tool runs entirely in your browser using JavaScript. When you upload an image, paste text, or process a PDF — that data is handled locally, not sent to any server.
         </p>
@@ -117,7 +117,7 @@ export default function HelpPage() {
 
       {/* Browse by category */}
       <section className="mb-14">
-        <h2 className="text-xl font-bold text-[var(--text)] mb-4">Browse by category</h2>
+        <h2 className="font-display text-xl font-semibold text-[var(--text)] mb-4">Browse by category</h2>
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => {
             const count = tools.filter((t) => t.category === cat).length;
@@ -137,7 +137,7 @@ export default function HelpPage() {
 
       {/* FAQ */}
       <section className="mb-14">
-        <h2 className="text-xl font-bold text-[var(--text)] mb-6">Frequently asked questions</h2>
+        <h2 className="font-display text-xl font-semibold text-[var(--text)] mb-6">Frequently asked questions</h2>
         <div className="space-y-px border border-[var(--border)] rounded-xl overflow-hidden">
           {faqs.map((faq) => (
             <div key={faq.q} className="bg-[var(--bg-card)] px-6 py-5">
