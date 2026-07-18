@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { trackUsage } from "@/lib/trackUsage";
 
@@ -101,12 +101,46 @@ const componentMap: Record<string, React.ComponentType> = {
 
 export default function ToolRenderer({ component, slug }: { component: string; slug: string }) {
   const tracked = useRef(false);
+  const startTime = useRef<number>(0);
   const Component = componentMap[component];
+
+  useEffect(() => {
+    startTime.current = Date.now();
+
+    const handleUnload = () => {
+      if (!tracked.current) return;
+      const timeSpent = Math.round((Date.now() - startTime.current) / 1000);
+      trackUsage(slug, true, false, timeSpent);
+    };
+
+    window.addEventListener("beforeunload", handleUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+      if (tracked.current) {
+        const timeSpent = Math.round((Date.now() - startTime.current) / 1000);
+        trackUsage(slug, true, false, timeSpent);
+      }
+    };
+  }, [slug]);
+
   if (!Component) return <p className="text-[var(--text-muted)]">Tool coming soon.</p>;
+
   return (
     <div
-      onPointerDown={() => { if (!tracked.current) { tracked.current = true; trackUsage(slug); } }}
-      onKeyDown={() => { if (!tracked.current) { tracked.current = true; trackUsage(slug); } }}
+      onPointerDown={() => {
+        if (!tracked.current) {
+          tracked.current = true;
+          startTime.current = Date.now();
+          trackUsage(slug);
+        }
+      }}
+      onKeyDown={() => {
+        if (!tracked.current) {
+          tracked.current = true;
+          startTime.current = Date.now();
+          trackUsage(slug);
+        }
+      }}
     >
       <Component />
     </div>
