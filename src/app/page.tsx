@@ -90,6 +90,7 @@ export default function HomePage() {
             Browser tools that<br className="hidden sm:block" />{" "}
             just <span className="text-[var(--brand)]">work.</span>
           </h1>
+
           <p className="text-lg md:text-xl text-[var(--text-muted)] mb-10 max-w-2xl mx-auto leading-relaxed">
             {tools.length}+ free utilities for text, images, PDFs, code, and conversions. No signup, no uploads to random servers, no &ldquo;start your free trial.&rdquo; Runs in your browser. Free forever.
           </p>
@@ -136,7 +137,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {featuredTools.map((tool) => <ToolCard key={tool.slug} tool={tool} />)}
+            {featuredTools.map((tool) => <ToolCard key={tool.slug} tool={tool} featured />)}
           </div>
         </section>
 

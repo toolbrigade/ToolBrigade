@@ -42,8 +42,8 @@ export default function AllToolsSection() {
           return (
             <div key={cat}>
               <div className="flex items-center gap-2 mb-5">
-                <CatIcon size={14} strokeWidth={2} className="text-[var(--text-muted)]" />
-                <h3 className="font-display text-sm font-semibold text-[var(--text)]">{cat}</h3>
+                <CatIcon size={14} strokeWidth={2} className="text-[var(--brand)]" />
+                <h3 className="font-display text-sm font-semibold text-[var(--text)] relative after:absolute after:-bottom-1 after:left-0 after:w-6 after:h-0.5 after:bg-[var(--brand)] after:rounded-full">{cat}</h3>
                 <span className="text-xs text-[var(--text-subtle)]">— {catTools.length}</span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
