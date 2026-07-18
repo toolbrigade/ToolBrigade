@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   ArrowRight,
   FileText, Code2, Image, FileDown, Wrench, Sparkles,
@@ -7,6 +8,8 @@ import {
 import { tools, categories } from "@/config/tools";
 import ToolCard from "@/components/ToolCard";
 import HomeSearch from "./HomeSearch";
+
+const AllToolsSection = dynamic(() => import("./AllToolsSection"), { ssr: false });
 
 export const metadata: Metadata = {
   title: "ToolBrigade — Free Online Tools for Developers & Creators",
@@ -185,28 +188,7 @@ export default function HomePage() {
       <div className="max-w-7xl mx-auto px-4">
 
         {/* ── All tools by category ── */}
-        <section className="py-16 border-t border-[var(--border)]">
-          <h2 className="text-lg font-semibold text-[var(--text)] mb-10">All {tools.length} tools</h2>
-          <div className="space-y-14">
-            {categories.map((cat) => {
-              const catTools = tools.filter((t) => t.category === cat);
-              const meta = categoryMeta[cat];
-              const CatIcon = meta?.icon ?? Wrench;
-              return (
-                <div key={cat}>
-                  <div className="flex items-center gap-2 mb-5">
-                    <CatIcon size={14} strokeWidth={2} className="text-[var(--text-muted)]" />
-                    <h3 className="text-sm font-semibold text-[var(--text)]">{cat}</h3>
-                    <span className="text-xs text-[var(--text-subtle)]">— {catTools.length}</span>
-                  </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                    {catTools.map((tool) => <ToolCard key={tool.slug} tool={tool} />)}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+        <AllToolsSection />
       </div>
     </div>
   );

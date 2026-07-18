@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
   async headers() {
     return [
       {
@@ -17,7 +20,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https://www.google-analytics.com",
               "font-src 'self' data:",
-              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.exchangerate-api.com https://ep-dry-violet-au2c060q.c-10.us-east-1.aws.neon.tech",
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://api.exchangerate-api.com https://ep-dry-violet-au2c060q.c-10.us-east-1.aws.neon.tech",
               "worker-src 'self' blob:",
               "frame-ancestors 'none'",
             ].join("; "),
