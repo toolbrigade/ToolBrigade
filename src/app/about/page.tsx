@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   title: "About ToolBrigade — Free Browser-Based Tools",
   description:
     "ToolBrigade is a solo-built collection of free browser-based tools. No signups, no uploads, no ads. Built by one developer, adding tools regularly.",
-  alternates: { canonical: "https://toolbrigade.com/about" },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/about` },
   openGraph: {
     title: "About ToolBrigade",
     description: "Free browser-based tools. No signups, no uploads, no ads.",
-    url: "https://toolbrigade.com/about",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/about`,
   },
 };
 

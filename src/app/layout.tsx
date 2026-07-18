@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://toolbrigade.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
   title: {
     default: "ToolBrigade — Free Online Tools for Developers & Creators",
     template: "%s | ToolBrigade",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://toolbrigade.com",
+    url: process.env.NEXT_PUBLIC_SITE_URL,
     siteName: "ToolBrigade",
     title: "ToolBrigade — Free Online Tools for Developers & Creators",
     description:
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     description: "Free browser-based tools. No sign-up, no uploads, instant results.",
     images: ["/og-image.png"],
   },
-  alternates: { canonical: "https://toolbrigade.com" },
+  alternates: { canonical: process.env.NEXT_PUBLIC_SITE_URL },
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",

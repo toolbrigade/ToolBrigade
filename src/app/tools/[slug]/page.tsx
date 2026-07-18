@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!tool) return {};
   const title = `${tool.name} — Free Online Tool`;
   const description = tool.longDescription.split(".")[0].slice(0, 157) + ".";
-  const url = `https://toolbrigade.com/tools/${tool.slug}`;
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}/tools/${tool.slug}`;
   return {
     title,
     description,
@@ -74,9 +74,9 @@ export default function ToolPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://toolbrigade.com" },
-      { "@type": "ListItem", position: 2, name: "Tools", item: "https://toolbrigade.com/tools" },
-      { "@type": "ListItem", position: 3, name: tool.name, item: `https://toolbrigade.com/tools/${tool.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: process.env.NEXT_PUBLIC_SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Tools", item: `${process.env.NEXT_PUBLIC_SITE_URL}/tools` },
+      { "@type": "ListItem", position: 3, name: tool.name, item: `${process.env.NEXT_PUBLIC_SITE_URL}/tools/${tool.slug}` },
     ],
   };
 

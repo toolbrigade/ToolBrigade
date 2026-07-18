@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { tools } from "@/config/tools";
 
-const BASE = "https://toolbrigade.com";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL!;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
