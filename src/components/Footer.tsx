@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { categories, tools } from "@/config/tools";
 
 const footerLinks = {
@@ -33,8 +34,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="col-span-2 md:col-span-2">
             <Link href="/" className="flex items-center gap-2.5 mb-4 group w-fit">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt="ToolBrigade" width={32} height={32} className="w-8 h-8 rounded-lg" />
+              <Image src="/logo.png" alt="ToolBrigade" width={32} height={32} className="w-8 h-8 rounded-lg" />
               <span className="font-bold text-lg tracking-tight text-[var(--text)]">
                 Tool<span className="text-[var(--brand)]">Brigade</span>
               </span>

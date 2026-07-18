@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   description:
     "Answers to common questions about ToolBrigade. How tools work, privacy, offline use, and more.",
   alternates: { canonical: "https://toolbrigade.com/help" },
+  openGraph: {
+    title: "Help Center — ToolBrigade",
+    description: "Answers to common questions about ToolBrigade.",
+    url: "https://toolbrigade.com/help",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "ToolBrigade Help Center" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Help Center — ToolBrigade",
+    description: "Answers to common questions about ToolBrigade.",
+    images: ["/og-image.png"],
+  },
 };
 
 const faqs = [

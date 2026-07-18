@@ -6,6 +6,18 @@ export const metadata: Metadata = {
   title: "Contact — ToolBrigade",
   description: "Get in touch. Report bugs, suggest tools, or ask questions about ToolBrigade.",
   alternates: { canonical: "https://toolbrigade.com/contact" },
+  openGraph: {
+    title: "Contact — ToolBrigade",
+    description: "Get in touch. Report bugs, suggest tools, or ask questions.",
+    url: "https://toolbrigade.com/contact",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Contact ToolBrigade" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact — ToolBrigade",
+    description: "Get in touch. Report bugs, suggest tools, or ask questions.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function ContactPage() {

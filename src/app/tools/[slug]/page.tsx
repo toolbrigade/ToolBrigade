@@ -30,12 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       siteName: "ToolBrigade",
       type: "website",
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `${tool.name} — ToolBrigade` }],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
       site: "@toolbrigade",
+      images: ["/og-image.png"],
     },
     alternates: { canonical: url },
   };
@@ -80,11 +82,23 @@ export default function ToolPage({ params }: Props) {
     ],
   };
 
+  const softwareAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: tool.name,
+    description: tool.description,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/tools/${tool.slug}`,
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }} />
 
       {/* Breadcrumb */}
       <nav className="text-sm text-[var(--text-muted)] mb-6 flex items-center gap-2">

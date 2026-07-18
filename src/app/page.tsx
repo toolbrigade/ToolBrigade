@@ -20,6 +20,13 @@ export const metadata: Metadata = {
     title: "ToolBrigade — Free Online Tools for Developers & Creators",
     description: `${tools.length}+ free browser-based tools. No sign-up required.`,
     url: "https://toolbrigade.com",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "ToolBrigade — Free Online Tools" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ToolBrigade — Free Online Tools for Developers & Creators",
+    description: `${tools.length}+ free browser-based tools. No sign-up required.`,
+    images: ["/og-image.png"],
   },
 };
 
@@ -54,10 +61,24 @@ const categoryMeta: Record<string, { icon: React.ElementType; description: strin
 
 const featuredTools = tools.slice(0, 8);
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "ToolBrigade",
+  url: "https://toolbrigade.com",
+  description: "Free browser-based tools for text, images, PDFs, code, and conversions.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: { "@type": "EntryPoint", urlTemplate: "https://toolbrigade.com/tools?category={search_term_string}" },
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function HomePage() {
   return (
     <div>
       {/* ── Hero ── */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       <section className="relative overflow-hidden border-b border-[var(--border)]">
         <div
           className="absolute inset-0 opacity-[0.025] dark:opacity-[0.04]"
@@ -80,7 +101,7 @@ export default function HomePage() {
               Browse All Tools <ArrowRight size={16} />
             </Link>
             <Link href="/about" className="btn-secondary">
-              Learn More
+              Why I built this
             </Link>
           </div>
           {/* category pills inside hero */}

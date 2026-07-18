@@ -5,6 +5,18 @@ export const metadata: Metadata = {
   title: "Terms of Service — ToolBrigade",
   description: "ToolBrigade terms of service. Free to use, no account required. Fair use policy and acceptable use guidelines.",
   alternates: { canonical: "https://toolbrigade.com/terms" },
+  openGraph: {
+    title: "Terms of Service — ToolBrigade",
+    description: "Free to use, no account required. Fair use policy and acceptable use guidelines.",
+    url: "https://toolbrigade.com/terms",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "ToolBrigade Terms of Service" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service — ToolBrigade",
+    description: "Free to use, no account required.",
+    images: ["/og-image.png"],
+  },
 };
 
 const lastUpdated = "2026";

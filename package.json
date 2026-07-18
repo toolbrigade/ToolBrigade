@@ -11,6 +11,12 @@
     "test:smoke": "playwright test smoke",
     "test:ui": "playwright test --ui"
   },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
     "heic2any": "^0.0.4",

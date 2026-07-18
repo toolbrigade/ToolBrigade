@@ -5,6 +5,18 @@ export const metadata: Metadata = {
   title: "Disclaimer — ToolBrigade",
   description: "ToolBrigade disclaimer. Tools are provided for utility purposes only. Read the full disclaimer.",
   alternates: { canonical: "https://toolbrigade.com/disclaimer" },
+  openGraph: {
+    title: "Disclaimer — ToolBrigade",
+    description: "Tools are provided for utility purposes only.",
+    url: "https://toolbrigade.com/disclaimer",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "ToolBrigade Disclaimer" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Disclaimer — ToolBrigade",
+    description: "Tools are provided for utility purposes only.",
+    images: ["/og-image.png"],
+  },
 };
 
 const lastUpdated = "2026";

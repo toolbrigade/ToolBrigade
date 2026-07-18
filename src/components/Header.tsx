@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -93,8 +94,7 @@ export default function Header() {
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="ToolBrigade" width={32} height={32} className="w-8 h-8 rounded-lg" />
+          <Image src="/logo.png" alt="ToolBrigade" width={32} height={32} className="w-8 h-8 rounded-lg" priority />
           <span className="font-bold text-lg tracking-tight text-[var(--text)]">
             Tool<span className="text-[var(--brand)]">Brigade</span>
           </span>

@@ -6,6 +6,18 @@ export const metadata: Metadata = {
   description:
     "ToolBrigade's privacy policy. Your files never leave your device. Minimal anonymous analytics only.",
   alternates: { canonical: "https://toolbrigade.com/privacy" },
+  openGraph: {
+    title: "Privacy Policy — ToolBrigade",
+    description: "Your files never leave your device. Minimal anonymous analytics only.",
+    url: "https://toolbrigade.com/privacy",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "ToolBrigade Privacy Policy" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy — ToolBrigade",
+    description: "Your files never leave your device. Minimal anonymous analytics only.",
+    images: ["/og-image.png"],
+  },
 };
 
 const lastUpdated = "2026";

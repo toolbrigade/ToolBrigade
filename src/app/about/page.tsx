@@ -12,12 +12,31 @@ export const metadata: Metadata = {
     title: "About ToolBrigade",
     description: "Free browser-based tools. No signups, no uploads, no ads.",
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/about`,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "About ToolBrigade" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About ToolBrigade",
+    description: "Free browser-based tools. No signups, no uploads, no ads.",
+    images: ["/og-image.png"],
   },
 };
 
 export default function AboutPage() {
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "ToolBrigade",
+    url: "https://toolbrigade.com",
+    logo: "https://toolbrigade.com/logo.png",
+    description: "A solo-built collection of free browser-based tools for developers, designers, and creators.",
+    founder: { "@type": "Person", name: "AbdulRaheem" },
+    sameAs: [],
+  };
+
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       {/* ── Hero ── */}
       <section className="border-b border-[var(--border)]">
         <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
