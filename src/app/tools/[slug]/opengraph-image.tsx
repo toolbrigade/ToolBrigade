@@ -3,10 +3,10 @@ import { getToolBySlug } from "@/config/tools";
 
 export const runtime = "edge";
 
-export async function GET(
-  _req: Request,
-  { params }: { params: { slug: string } }
-) {
+export const size = { width: 1200, height: 630 };
+export const contentType = "image/png";
+
+export default function Image({ params }: { params: { slug: string } }) {
   const tool = getToolBySlug(params.slug);
   const name = tool?.name ?? "ToolBrigade";
   const category = tool?.category ?? "";
