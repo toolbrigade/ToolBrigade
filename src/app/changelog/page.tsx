@@ -22,6 +22,22 @@ export const metadata: Metadata = {
 
 type ChangeType = "new" | "improved" | "fixed" | "performance";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// HOW TO ADD A NEW ENTRY:
+// Copy the block below, paste it at the TOP of the array (newest first),
+// fill in version, date (e.g. "January 2027"), and changes.
+//
+// {
+//   version: "2.1",
+//   date: "Month YYYY",
+//   changes: [
+//     { type: "new",         text: "Added [Tool Name] tool" },
+//     { type: "improved",    text: "Improved [something]" },
+//     { type: "fixed",       text: "Fixed [bug description]" },
+//     { type: "performance", text: "[Performance improvement]" },
+//   ],
+// },
+// ─────────────────────────────────────────────────────────────────────────────
 const changelog: {
   version: string;
   date: string;
@@ -61,8 +77,11 @@ export default function ChangelogPage() {
       </nav>
 
       <h1 className="font-display text-4xl font-semibold text-[var(--text)] mb-4">Changelog</h1>
-      <p className="text-[var(--text-muted)] mb-14">
+      <p className="text-[var(--text-muted)] mb-2">
         Every update, new tool, and fix — in one place.
+      </p>
+      <p className="text-sm text-[var(--text-subtle)] mb-14">
+        Updated whenever a new tool ships or something meaningful changes — not every tiny tweak.
       </p>
 
       <div className="space-y-12">

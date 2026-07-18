@@ -51,8 +51,9 @@ export default function DisclaimerPage() {
             Tools are designed to be accurate and useful, but should not be relied upon as the sole source of truth for critical decisions. Specifically:
           </p>
           <ul className="space-y-2 text-sm list-disc list-inside">
-            <li>The <strong className="text-[var(--text)]">BMI Calculator</strong> provides a general health screening metric only. It is not a substitute for professional medical advice.</li>
-            <li>The <strong className="text-[var(--text)]">Currency Converter</strong> uses live rates from a third-party API. Rates may differ from those offered by banks or financial institutions.</li>
+            <li>The <strong className="text-[var(--text)]">BMI Calculator</strong> provides a general health screening metric only. It is not a substitute for professional medical advice. BMI does not account for muscle mass, bone density, age, or other health factors.</li>
+            <li>The <strong className="text-[var(--text)]">Age Calculator</strong> and <strong className="text-[var(--text)]">Date Difference Calculator</strong> are informational utilities. Do not rely on them as the sole basis for legal, contractual, or official age/date determinations — verify with authoritative records.</li>
+            <li>The <strong className="text-[var(--text)]">Currency Converter</strong> uses live rates from exchangerate-api.com, updated daily. Rates are indicative only and may differ from those offered by banks, payment processors, or financial institutions. Do not use for financial transactions without verifying current rates.</li>
             <li>The <strong className="text-[var(--text)]">Text Encryptor</strong> uses simple ciphers (Caesar, ROT13) that are not cryptographically secure. Do not use for sensitive data.</li>
             <li>The <strong className="text-[var(--text)]">PDF Password Remover</strong> can only remove owner-level restrictions. It cannot bypass strong user-level encryption.</li>
             <li>The <strong className="text-[var(--text)]">PNG to SVG Converter</strong> produces pixel-level tracing, not professional vector art.</li>
@@ -62,7 +63,7 @@ export default function DisclaimerPage() {
         <section>
           <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">No Professional Advice</h2>
           <p>
-            Nothing on ToolBrigade constitutes legal, financial, medical, or professional advice. Tools like the BMI Calculator, Age Calculator, or Date Difference Calculator are utilities only. Always consult a qualified professional for decisions that matter.
+            Nothing on ToolBrigade constitutes legal, financial, medical, or professional advice. Tools like the BMI Calculator, Age Calculator, Date Difference Calculator, and Currency Converter are utilities only — they produce informational results, not professional determinations. Always consult a qualified professional for decisions that matter.
           </p>
         </section>
 

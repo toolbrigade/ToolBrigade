@@ -65,11 +65,15 @@ export default function CookiesPage() {
 
             <div className="card">
               <div className="flex items-start justify-between gap-3 mb-2">
-                <h3 className="font-semibold text-[var(--text)] text-sm">Analytics Cookies</h3>
+                <h3 className="font-semibold text-[var(--text)] text-sm">Google Analytics 4 (GA4)</h3>
                 <span className="text-xs bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 px-2 py-0.5 rounded-full font-medium shrink-0">Analytics</span>
               </div>
-              <p className="text-sm mb-2">Used to distinguish users and sessions for anonymous usage analytics. Helps understand which tools are most used and how to improve the site.</p>
-              <p className="text-xs text-[var(--text-subtle)]">Duration: Up to 2 years · Third-party analytics provider</p>
+              <p className="text-sm mb-2">GA4 collects anonymous usage data — page views, session duration, device type, and country. IP anonymisation is enabled. GA4 sets the following cookies:</p>
+              <ul className="text-xs text-[var(--text-muted)] space-y-1 list-disc list-inside mb-2">
+                <li><code className="bg-[var(--bg-subtle)] px-1 py-0.5 rounded">_ga</code> — distinguishes users (expires 2 years)</li>
+                <li><code className="bg-[var(--bg-subtle)] px-1 py-0.5 rounded">_ga_*</code> — maintains session state (expires 2 years)</li>
+              </ul>
+              <p className="text-xs text-[var(--text-subtle)]">Duration: Up to 2 years · Provider: Google LLC</p>
             </div>
           </div>
         </section>

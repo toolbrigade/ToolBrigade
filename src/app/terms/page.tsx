@@ -66,12 +66,27 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">4. Acceptable Use</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">4. No Warranty on Tool Output</h2>
+          <p className="mb-3">
+            ToolBrigade is built and maintained by a solo developer, not a company with an SLA or support team. Tools are provided as-is with no guarantee of accuracy for critical decisions. Specifically:
+          </p>
+          <ul className="space-y-2 text-sm list-disc list-inside">
+            <li>Do not rely solely on the <strong className="text-[var(--text)]">Age Calculator</strong> or <strong className="text-[var(--text)]">Date Difference Calculator</strong> for legal, contractual, or official age/date determinations.</li>
+            <li>Do not rely solely on the <strong className="text-[var(--text)]">Currency Converter</strong> for financial transactions — rates are indicative and may differ from those offered by banks or payment processors.</li>
+            <li>Do not use the <strong className="text-[var(--text)]">BMI Calculator</strong> as a substitute for professional medical advice.</li>
+            <li>Do not use the <strong className="text-[var(--text)]">Text Encryptor</strong> (Caesar cipher, ROT13) for sensitive data — these are not cryptographically secure.</li>
+          </ul>
+          <p className="mt-3 text-sm">See the <Link href="/disclaimer" className="text-[var(--brand)] hover:underline">Disclaimer</Link> for the full list of tool-specific caveats.</p>
+        </section>
+
+        <section>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">5. Acceptable Use</h2>
           <p className="mb-3">You agree not to use ToolBrigade to:</p>
           <ul className="space-y-2 text-sm list-disc list-inside">
             <li>Violate any applicable laws or regulations</li>
             <li>Process illegal, harmful, or infringing content</li>
             <li>Attempt to reverse-engineer, scrape, or automate the Service in ways that harm performance for other users</li>
+            <li>Use automated scripts or bots to make bulk requests to the site</li>
             <li>Circumvent any security measures or access controls</li>
             <li>Distribute malware, spam, or harmful code</li>
             <li>Impersonate ToolBrigade</li>
@@ -79,56 +94,63 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">5. Intellectual Property</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">6. Solo Developer — No SLA</h2>
+          <p>
+            ToolBrigade is built and maintained by one person. There is no company, no support team, and no service level agreement. I do my best to keep things running and fix bugs promptly, but I cannot guarantee uptime, response times, or that any specific tool will remain available indefinitely.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">7. Intellectual Property</h2>
           <p>
             The ToolBrigade name, logo, design, and original content are proprietary. You may not reproduce, distribute, or create derivative works from the branding without written permission. Tools use open-source libraries — see individual tool pages for attribution.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">6. Your Content</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">8. Your Content</h2>
           <p>
             Since all processing happens in your browser, no content you process is received, stored, or accessible. You retain full ownership of your content. No claim is made over anything you create or process using ToolBrigade.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">7. Disclaimer of Warranties</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">9. Disclaimer of Warranties</h2>
           <p>
             ToolBrigade is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranties of any kind, express or implied. There is no warranty that the Service will be uninterrupted, error-free, or free of viruses. Use the Service at your own risk.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">8. Limitation of Liability</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">10. Limitation of Liability</h2>
           <p>
             To the maximum extent permitted by law, ToolBrigade shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of ToolBrigade, including but not limited to loss of data, loss of profits, or business interruption.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">9. Third-Party Links and Services</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">11. Third-Party Links and Services</h2>
           <p>
             ToolBrigade may link to third-party websites or use third-party libraries. No responsibility is accepted for the content, privacy practices, or availability of third-party services. Links do not constitute endorsement.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">10. Changes to Terms</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">12. Changes to Terms</h2>
           <p>
             These Terms may be modified at any time. Changes will be posted on this page with an updated date. Continued use of the Service after changes constitutes acceptance of the new Terms.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">11. Governing Law</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">13. Governing Law</h2>
           <p>
             These Terms are governed by applicable law. Any disputes shall be resolved through appropriate legal channels.
           </p>
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">12. Contact</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">14. Contact</h2>
           <p>
             Questions about these Terms? Contact{" "}
             <a href="mailto:legal@toolbrigade.com" className="text-[var(--brand)] hover:underline">

@@ -76,12 +76,16 @@ export default function PrivacyPage() {
           <p className="mb-3">Minimal, anonymous data is collected to operate and improve the site:</p>
           <div className="space-y-4">
             <div className="card">
-              <h3 className="font-semibold text-[var(--text)] mb-1 text-sm">Analytics</h3>
-              <p className="text-sm">Anonymous usage analytics — page views, session duration, device type, and country. This data cannot identify you individually.</p>
+              <h3 className="font-semibold text-[var(--text)] mb-1 text-sm">Analytics (Google Analytics 4)</h3>
+              <p className="text-sm">ToolBrigade uses Google Analytics 4 (GA4) to collect anonymous usage data — page views, session duration, device type, and country. GA4 is configured with IP anonymisation. This data cannot identify you individually and is never linked to file contents or tool outputs. GA4 sets cookies in your browser (see the <Link href="/cookies" className="text-[var(--brand)] hover:underline">Cookie Policy</Link> for details).</p>
             </div>
             <div className="card">
               <h3 className="font-semibold text-[var(--text)] mb-1 text-sm">Theme Cookie</h3>
               <p className="text-sm">Your theme preference (light/dark mode) is stored in a <code className="text-xs bg-[var(--bg-subtle)] px-1 py-0.5 rounded">theme</code> cookie. This data never leaves your device.</p>
+            </div>
+            <div className="card">
+              <h3 className="font-semibold text-[var(--text)] mb-1 text-sm">Tool Suggestion Form (Resend)</h3>
+              <p className="text-sm">When you submit the suggest-a-tool form, the data you enter — tool name, description, category (optional), and email (optional) — is sent to me via <strong className="text-[var(--text)]">Resend</strong> (resend.com), a transactional email service. Resend processes this data solely to deliver the email. Resend retains email metadata (sender, recipient, subject, timestamp) for up to 30 days; message body content is not retained after delivery. Only what you explicitly type is sent — no file contents, no browsing history. The contact page uses direct mailto links and does not involve Resend. Resend&apos;s privacy policy: resend.com/privacy.</p>
             </div>
             <div className="card">
               <h3 className="font-semibold text-[var(--text)] mb-1 text-sm">Server Logs</h3>
@@ -101,9 +105,10 @@ export default function PrivacyPage() {
           <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">5. Third-Party Services</h2>
           <p className="mb-3">The following third-party services are used:</p>
           <ul className="space-y-2 text-sm list-disc list-inside">
-            <li><strong className="text-[var(--text)]">Analytics</strong> — anonymous usage data</li>
+            <li><strong className="text-[var(--text)]">Google Analytics 4</strong> — anonymous usage analytics (page views, session data, device type, country). No personal data or file contents are sent.</li>
+            <li><strong className="text-[var(--text)]">Resend</strong> — transactional email delivery for the suggest-a-tool form. Processes tool name, description, category, and email (all optional except tool name and description) when you explicitly submit that form. The contact page uses direct mailto links and does not involve Resend.</li>
             <li><strong className="text-[var(--text)]">Hosting &amp; CDN</strong> — website delivery infrastructure</li>
-            <li><strong className="text-[var(--text)]">Currency Rates API</strong> — live exchange rates for the Currency Converter tool only (no personal data sent)</li>
+            <li><strong className="text-[var(--text)]">exchangerate-api.com</strong> — live exchange rates for the Currency Converter tool only. Only the source currency code is sent in the API request URL. No personal data is transmitted.</li>
           </ul>
         </section>
 

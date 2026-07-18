@@ -39,7 +39,7 @@ const categoryMeta: Record<string, { icon: React.ElementType; count: number }> =
   Converter: { icon: Wrench,   count: 15 },
   Image:     { icon: Image,    count: 20 },
   PDF:       { icon: FileDown, count: 12 },
-  Misc:      { icon: Sparkles, count: 10 },
+  Utilities: { icon: Sparkles, count: 10 },
 };
 
 const featuredSlugs = [
@@ -85,7 +85,7 @@ export default function HomePage() {
           }}
         />
         <div className="relative max-w-7xl mx-auto px-4 pt-20 md:pt-28 pb-10 text-center">
-          <p className="section-label mb-5">92+ free browser tools</p>
+          <p className="section-label mb-5">{tools.length}+ free browser tools</p>
           <h1 className="font-display text-5xl md:text-7xl font-semibold tracking-tight text-[var(--text)] mb-6 leading-[1.05]">
             Browser tools that<br className="hidden sm:block" />{" "}
             just <span className="text-[var(--brand)]">work.</span>
@@ -100,7 +100,7 @@ export default function HomePage() {
               Browse All Tools <ArrowRight size={16} strokeWidth={1.75} />
             </Link>
             <Link href="/about" className="btn-secondary">
-              Learn More
+              Learn more about ToolBrigade
             </Link>
           </div>
 

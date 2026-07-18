@@ -65,6 +65,39 @@ const faqs = [
   },
 ];
 
+const helpArticles = [
+  {
+    slug: "why-no-account-or-upload",
+    title: "Why does ToolBrigade need no account or upload?",
+    desc: "A deeper look at Canvas API, Web Crypto API, PDF.js, and how client-side processing actually works.",
+  },
+  {
+    slug: "offline-vs-internet",
+    title: "Which tools work offline vs need internet?",
+    desc: "A clear list. Spoiler: only the Currency Converter needs a connection.",
+  },
+  {
+    slug: "browser-compatibility",
+    title: "Browser compatibility — what you need to know",
+    desc: "Which tools use newer APIs, what to do if something doesn't load, and which browsers are supported.",
+  },
+  {
+    slug: "file-size-limits",
+    title: "Understanding file size limits in your browser",
+    desc: "Why large files can be slow, and rough safe limits for images and PDFs.",
+  },
+  {
+    slug: "how-tool-suggestions-work",
+    title: "How tool suggestions get picked",
+    desc: "An honest explanation of how I decide what to build next.",
+  },
+  {
+    slug: "data-and-privacy",
+    title: "Data and privacy — a plain-English explanation",
+    desc: "What GA4 collects, how Resend is used, and why I structurally can't see your files.",
+  },
+];
+
 export default function HelpPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-14">
@@ -79,6 +112,26 @@ export default function HelpPage() {
       <p className="text-[var(--text-muted)] leading-relaxed mb-14">
         Answers to common questions. If you can&apos;t find what you need, <Link href="/contact" className="text-[var(--brand)] hover:underline">get in touch</Link>.
       </p>
+
+      {/* Articles */}
+      <section className="mb-14">
+        <h2 className="font-display text-xl font-semibold text-[var(--text)] mb-6">In-depth articles</h2>
+        <div className="space-y-px border border-[var(--border)] rounded-xl overflow-hidden">
+          {helpArticles.map((article) => (
+            <Link
+              key={article.slug}
+              href={`/help/${article.slug}`}
+              className="bg-[var(--bg-card)] px-6 py-5 flex items-start justify-between gap-4 hover:bg-[var(--bg-subtle)] transition-colors group"
+            >
+              <div>
+                <p className="font-semibold text-[var(--text)] text-sm mb-1 group-hover:text-[var(--brand)] transition-colors">{article.title}</p>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed">{article.desc}</p>
+              </div>
+              <ArrowRight size={16} className="text-[var(--text-subtle)] shrink-0 mt-0.5 group-hover:text-[var(--brand)] transition-colors" />
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* Getting started */}
       <section className="mb-14">
@@ -107,12 +160,17 @@ export default function HelpPage() {
         <p className="text-[var(--text-muted)] leading-relaxed mb-3">
           <strong className="text-[var(--text)]">Your data never leaves your device.</strong> Every tool runs entirely in your browser using JavaScript. When you upload an image, paste text, or process a PDF — that data is handled locally, not sent to any server.
         </p>
-        <p className="text-sm text-[var(--text-muted)] mb-4">
-          Only anonymous analytics (page views, session data) are collected. No personal information, file contents, or tool outputs are ever collected.
+        <p className="text-sm text-[var(--text-muted)] mb-3">
+          Anonymous analytics (page views, session data via Google Analytics 4) are collected. No personal information, file contents, or tool outputs are ever collected. The Currency Converter fetches live rates from exchangerate-api.com — only the source currency code is sent.
         </p>
-        <Link href="/privacy" className="text-sm text-[var(--brand)] hover:underline inline-flex items-center gap-1">
-          Read the full Privacy Policy <ArrowRight size={13} />
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/privacy" className="text-sm text-[var(--brand)] hover:underline inline-flex items-center gap-1">
+            Read the full Privacy Policy <ArrowRight size={13} />
+          </Link>
+          <Link href="/help/data-and-privacy" className="text-sm text-[var(--brand)] hover:underline inline-flex items-center gap-1">
+            Plain-English explanation <ArrowRight size={13} />
+          </Link>
+        </div>
       </section>
 
       {/* Browse by category */}
