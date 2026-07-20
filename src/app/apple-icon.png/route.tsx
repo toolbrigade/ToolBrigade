@@ -12,7 +12,7 @@ export function GET() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#1E5F4E",
+          background: "#A84A2E",
           borderRadius: 40,
         }}
       >

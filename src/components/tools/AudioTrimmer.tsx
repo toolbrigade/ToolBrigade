@@ -23,9 +23,9 @@ export default function AudioTrimmer() {
     const data = buffer.getChannelData(0);
     const step = Math.ceil(data.length / canvas.width);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#1E5F4E22";
+    ctx.fillStyle = "#A84A2E22";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = "#1E5F4E";
+    ctx.strokeStyle = "#A84A2E";
     ctx.lineWidth = 1;
     ctx.beginPath();
     const mid = canvas.height / 2;

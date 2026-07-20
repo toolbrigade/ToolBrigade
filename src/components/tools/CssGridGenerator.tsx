@@ -25,7 +25,7 @@ row-gap: ${rowGap}px;`;
   };
 
   const cellCount = cols * rows;
-  const colors = ["#1E5F4E", "#2d7a65", "#3d9478", "#4dae8b"];
+  const colors = ["#A84A2E", "#C75D3A", "#D4714F", "#E08A6A"];
 
   return (
     <div className="space-y-5">

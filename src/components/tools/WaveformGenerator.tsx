@@ -5,7 +5,7 @@ import { trackTaskComplete } from "@/lib/trackUsage";
 
 export default function WaveformGenerator() {
   const [file, setFile] = useState<File | null>(null);
-  const [color, setColor] = useState("#1E5F4E");
+  const [color, setColor] = useState("#A84A2E");
   const [bgColor, setBgColor] = useState("#FAFAF8");
   const [height, setHeight] = useState(200);
   const [style, setStyle] = useState<"bars" | "line" | "mirror">("bars");

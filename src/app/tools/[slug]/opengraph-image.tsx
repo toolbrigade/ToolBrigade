@@ -32,7 +32,7 @@ export default function Image({ params }: { params: { slug: string } }) {
               width: 48,
               height: 48,
               borderRadius: 12,
-              background: "#1E5F4E",
+              background: "#A84A2E",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -44,7 +44,7 @@ export default function Image({ params }: { params: { slug: string } }) {
             T
           </div>
           <span style={{ fontSize: 28, fontWeight: 700, color: "#1A1B1E" }}>
-            Tool<span style={{ color: "#1E5F4E" }}>Brigade</span>
+            Tool<span style={{ color: "#A84A2E" }}>Brigade</span>
           </span>
         </div>
 

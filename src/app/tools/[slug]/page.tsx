@@ -20,7 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tool = getToolBySlug(params.slug);
   if (!tool) return {};
   const title = `${tool.name} — Free Online Tool`;
-  const description = tool.longDescription.split(".")[0].slice(0, 157) + ".";
+  const description =
+    tool.metaDescription ??
+    (tool.description.length <= 160
+      ? tool.description
+      : tool.description.slice(0, 157).trimEnd() + "…");
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/tools/${tool.slug}`;
   return {
     title,

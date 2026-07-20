@@ -30,7 +30,7 @@ export function GET() {
               width: "64px",
               height: "64px",
               borderRadius: "16px",
-              background: "#1E5F4E",
+              background: "#A84A2E",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -42,7 +42,7 @@ export function GET() {
             T
           </div>
           <span style={{ fontSize: "48px", fontWeight: "bold", color: "#1A1B1E" }}>
-            Tool<span style={{ color: "#1E5F4E" }}>Brigade</span>
+            Tool<span style={{ color: "#A84A2E" }}>Brigade</span>
           </span>
         </div>
         <p
