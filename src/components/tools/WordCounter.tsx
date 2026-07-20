@@ -34,7 +34,7 @@ export default function WordCounter() {
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
         {stats.map((s) => (
           <div key={s.label} className="bg-[var(--bg-subtle)] rounded-lg p-3 text-center">
-            <p className="text-xl font-semibold text-brand-600 dark:text-brand-400">{s.value}</p>
+            <p className="text-xl font-semibold text-brand-700 dark:text-brand-400">{s.value}</p>
             <p className="text-xs text-[var(--text-muted)] mt-0.5">{s.label}</p>
           </div>
         ))}

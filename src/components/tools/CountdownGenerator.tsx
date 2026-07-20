@@ -84,7 +84,7 @@ export default function CountdownGenerator() {
         </div>
         <div>
           <label className="text-xs text-[var(--text-muted)]">Target Date & Time</label>
-          <input type="datetime-local" className="input mt-1" value={targetDate} onChange={e => setTargetDate(e.target.value)} />
+          <input type="datetime-local" className="input mt-1" value={targetDate} onChange={e => { setTargetDate(e.target.value); if (e.target.value) { const d = new Date(e.target.value); if (!isNaN(d.getTime())) { const params = new URLSearchParams({ t: d.getTime().toString(), n: eventName }); setShareUrl(`${window.location.origin}${window.location.pathname}?${params.toString()}`); setSharedTarget(d); setSharedName(eventName); } } }} />
         </div>
       </div>
       <button onClick={generate} className="btn-primary">Generate Countdown</button>

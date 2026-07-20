@@ -10,7 +10,7 @@ const UNITS: Unit[] = [
   { label: "Mebibytes (MiB)",binaryFactor: 1024 ** 2,            decimalFactor: 0 },
   { label: "Megabytes (MB)", binaryFactor: 0,                    decimalFactor: 1e6 },
   { label: "Gibibytes (GiB)",binaryFactor: 1024 ** 3,            decimalFactor: 0 },
-  { label: "Gigabytes (GB)", binaryFactor: 0,                    decimalFactor: 1e9 },
+  { label: "Gigabyte (GB)",  binaryFactor: 0,                    decimalFactor: 1e9 },
   { label: "Tebibytes (TiB)",binaryFactor: 1024 ** 4,            decimalFactor: 0 },
   { label: "Terabytes (TB)", binaryFactor: 0,                    decimalFactor: 1e12 },
   { label: "Pebibytes (PiB)",binaryFactor: 1024 ** 5,            decimalFactor: 0 },
@@ -30,7 +30,7 @@ const DECIMAL_UNITS = [
   { label: "Bytes (B)",       factor: 1 },
   { label: "Kilobytes (KB)",  factor: 1e3 },
   { label: "Megabytes (MB)",  factor: 1e6 },
-  { label: "Gigabytes (GB)",  factor: 1e9 },
+  { label: "Gigabyte (GB)",   factor: 1e9 },
   { label: "Terabytes (TB)",  factor: 1e12 },
   { label: "Petabytes (PB)",  factor: 1e15 },
 ];
@@ -43,7 +43,7 @@ function fmt(n: number) {
 
 export default function DataStorageConverter() {
   const [value, setValue] = useState("1");
-  const [fromUnit, setFromUnit] = useState("Gigabytes (GB)");
+  const [fromUnit, setFromUnit] = useState("Gigabyte (GB)");
 
   const v = parseFloat(value) || 0;
 
@@ -74,7 +74,7 @@ export default function DataStorageConverter() {
         </div>
       </div>
 
-      {v > 0 && (
+      {(
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
             <p className="text-xs font-semibold text-[var(--text)] mb-2">Binary (1024-based)</p>

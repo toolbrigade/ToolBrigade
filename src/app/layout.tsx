@@ -71,10 +71,7 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: process.env.NEXT_PUBLIC_SITE_URL },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
+    icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/apple-icon.png",
   },

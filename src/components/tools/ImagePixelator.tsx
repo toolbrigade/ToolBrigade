@@ -56,9 +56,9 @@ export default function ImagePixelator() {
           )}
           {out && (
             <div className="flex justify-center">
-              <a href={out} download={`${name}-pixelated.png`} className="btn-primary inline-flex items-center gap-2">
+              <button onClick={() => { const a = document.createElement("a"); a.href = out; a.download = `${name}-pixelated.png`; a.click(); }} className="btn-primary inline-flex items-center gap-2">
                 <Download size={16} />Download PNG
-              </a>
+              </button>
             </div>
           )}
         </>

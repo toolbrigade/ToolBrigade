@@ -81,7 +81,7 @@ export default function Base32Converter() {
         </div>
       </div>
       {error && <p className="text-sm text-red-500">{error}</p>}
-      <button onClick={convert} className="btn-primary text-sm capitalize">{mode}</button>
+      <button onClick={convert} className="btn-primary text-sm">{mode === "encode" ? "Encode →" : "Decode →"}</button>
     </div>
   );
 }

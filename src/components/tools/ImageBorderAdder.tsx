@@ -41,6 +41,13 @@ export default function ImageBorderAdder() {
     img.src = url;
   }
 
+  function download() {
+    const a = document.createElement("a");
+    a.href = out;
+    a.download = `${name}-bordered.png`;
+    a.click();
+  }
+
   return (
     <div className="space-y-4">
       <label className="border-2 border-dashed border-[var(--border)] hover:border-brand-400 rounded-xl p-8 flex flex-col items-center gap-2 cursor-pointer text-[var(--text-muted)]">
@@ -81,9 +88,9 @@ export default function ImageBorderAdder() {
             <div className="space-y-3 text-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={out} alt="bordered" className="max-h-64 mx-auto rounded-lg object-contain border border-[var(--border)]" />
-              <a href={out} download={`${name}-bordered.png`} className="btn-primary inline-flex items-center gap-2">
+              <button onClick={download} className="btn-primary inline-flex items-center gap-2">
                 <Download size={16} />Download PNG
-              </a>
+              </button>
             </div>
           )}
         </>

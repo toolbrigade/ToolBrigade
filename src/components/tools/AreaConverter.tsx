@@ -4,6 +4,7 @@ import { useState } from "react";
 const UNITS = [
   { label: "sq ft",    toSqM: 0.092903 },
   { label: "sq m",     toSqM: 1 },
+  { label: "sq cm",    toSqM: 0.0001 },
   { label: "sq km",    toSqM: 1e6 },
   { label: "sq miles", toSqM: 2589988.11 },
   { label: "acres",    toSqM: 4046.8564 },
@@ -20,7 +21,7 @@ function fmt(n: number) {
 
 export default function AreaConverter() {
   const [value, setValue] = useState("1");
-  const [from, setFrom] = useState("acres");
+  const [from, setFrom] = useState("sq m");
 
   const v = parseFloat(value) || 0;
   const fromUnit = UNITS.find(u => u.label === from)!;

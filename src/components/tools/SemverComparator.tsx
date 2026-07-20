@@ -72,12 +72,24 @@ export default function SemverComparator() {
   const [error, setError] = useState("");
   const [startTime] = useState(Date.now());
 
+  function tryAutoCompare(a: string, b: string) {
+    const pa = parseSemver(a);
+    const pb = parseSemver(b);
+    if (pa && pb) {
+      const { result: cmp, reasons } = compare(pa, pb);
+      setResult({ cmp, reasons, a: pa, b: pb });
+      setError("");
+      trackTaskComplete("semver-comparator", startTime);
+    } else {
+      setResult(null);
+    }
+  }
+
   function doCompare() {
     setError(""); setResult(null);
     const a = parseSemver(v1);
     const b = parseSemver(v2);
-    if (!a) { setError(`"${v1}" is not a valid semver string (expected MAJOR.MINOR.PATCH[-pre][+build])`); return; }
-    if (!b) { setError(`"${v2}" is not a valid semver string (expected MAJOR.MINOR.PATCH[-pre][+build])`); return; }
+    if (!a || !b) { setError(!a ? `"${v1}" is not a valid semver string` : `"${v2}" is not a valid semver string`); return; }
     const { result: cmp, reasons } = compare(a, b);
     setResult({ cmp, reasons, a, b });
     trackTaskComplete("semver-comparator", startTime);
@@ -88,13 +100,15 @@ export default function SemverComparator() {
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
           <label className="text-xs font-medium text-[var(--text-muted)] mb-1 block">Version A</label>
-          <input value={v1} onChange={e => setV1(e.target.value)} onKeyDown={e => e.key === "Enter" && doCompare()}
+          <input value={v1} onChange={e => { setV1(e.target.value); tryAutoCompare(e.target.value, v2); }}
+            onKeyDown={e => e.key === "Enter" && doCompare()}
             className="w-full text-lg font-mono border border-[var(--border)] rounded-xl px-4 py-3 bg-[var(--surface)] text-[var(--text)] focus:outline-none focus:border-brand-400"
             placeholder="1.2.3" />
         </div>
         <div>
           <label className="text-xs font-medium text-[var(--text-muted)] mb-1 block">Version B</label>
-          <input value={v2} onChange={e => setV2(e.target.value)} onKeyDown={e => e.key === "Enter" && doCompare()}
+          <input value={v2} onChange={e => { setV2(e.target.value); tryAutoCompare(v1, e.target.value); }}
+            onKeyDown={e => e.key === "Enter" && doCompare()}
             className="w-full text-lg font-mono border border-[var(--border)] rounded-xl px-4 py-3 bg-[var(--surface)] text-[var(--text)] focus:outline-none focus:border-brand-400"
             placeholder="2.0.0-beta.1" />
         </div>

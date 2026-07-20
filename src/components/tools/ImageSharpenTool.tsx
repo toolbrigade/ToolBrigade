@@ -85,9 +85,9 @@ export default function ImageSharpenTool() {
           )}
           {out && (
             <div className="flex justify-center">
-              <a href={out} download={`${name}-sharpened.png`} className="btn-primary inline-flex items-center gap-2">
+              <button onClick={() => { const a = document.createElement("a"); a.href = out; a.download = `${name}-sharpened.png`; a.click(); }} className="btn-primary inline-flex items-center gap-2">
                 <Download size={16} />Download PNG
-              </a>
+              </button>
             </div>
           )}
         </>

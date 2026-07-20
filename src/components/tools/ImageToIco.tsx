@@ -140,9 +140,9 @@ export default function ImageToIco() {
           <p className="text-sm text-[var(--text-muted)]">ICO file with {selectedSizes.length} size{selectedSizes.length !== 1 ? "s" : ""}: {selectedSizes.join(", ")}px</p>
           <button onClick={() => buildAndSetIco()} className="btn-secondary text-sm">Regenerate with selected sizes</button>
           <div>
-            <a href={out} download={`${name}.ico`} className="btn-primary inline-flex items-center gap-2">
+          <button onClick={() => { const a = document.createElement("a"); a.href = out; a.download = `${name}.ico`; a.click(); }} className="btn-primary inline-flex items-center gap-2">
               <Download size={16} />Download ICO
-            </a>
+            </button>
           </div>
         </div>
       )}

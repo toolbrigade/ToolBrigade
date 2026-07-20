@@ -72,7 +72,7 @@ export default function SvgOptimizer() {
       <label className="border-2 border-dashed border-[var(--border)] hover:border-brand-400 rounded-xl p-6 flex flex-col items-center gap-2 cursor-pointer text-[var(--text-muted)] transition-colors">
         <Upload size={24} />
         <span className="text-sm font-medium">Upload SVG file</span>
-        <input type="file" accept=".svg,image/svg+xml" className="hidden" onChange={e => e.target.files?.[0] && handleFile(e.target.files[0])} />
+        <input type="file" accept=".svg,image/svg+xml" className="sr-only" onChange={e => e.target.files?.[0] && handleFile(e.target.files[0])} />
       </label>
 
       <div className="grid md:grid-cols-2 gap-4">
