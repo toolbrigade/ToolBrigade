@@ -57,13 +57,18 @@ export default function DisclaimerPage() {
             <li>The <strong className="text-[var(--text)]">Text Encryptor</strong> uses simple ciphers (Caesar, ROT13) that are not cryptographically secure. Do not use for sensitive data.</li>
             <li>The <strong className="text-[var(--text)]">PDF Password Remover</strong> can only remove owner-level restrictions. It cannot bypass strong user-level encryption.</li>
             <li>The <strong className="text-[var(--text)]">PNG to SVG Converter</strong> produces pixel-level tracing, not professional vector art.</li>
+            <li>The <strong className="text-[var(--text)]">Credit Card Validator / Generator</strong> generates Luhn-valid numbers for testing and development only. Generated numbers are NOT real credit card numbers and cannot be used for any real transaction.</li>
+            <li>The <strong className="text-[var(--text)]">Email Validator</strong>, <strong className="text-[var(--text)]">Phone Number Format Validator</strong>, <strong className="text-[var(--text)]">Postal Code Validator</strong>, <strong className="text-[var(--text)]">IBAN Validator</strong>, and <strong className="text-[var(--text)]">VAT ID Format Validator</strong> perform format validation only. They do not verify whether the validated value is active, registered, or assigned to a real entity.</li>
+            <li>The <strong className="text-[var(--text)]">IP Address Lookup</strong> uses ip-api.com for geolocation data. IP geolocation is approximate and may be inaccurate for VPNs, proxies, and corporate networks.</li>
+            <li>The <strong className="text-[var(--text)]">Broken Link Checker</strong> is subject to browser CORS restrictions. Most URLs will show &quot;unable to verify&quot; rather than a real HTTP status. This does not indicate the links are broken.</li>
+            <li>The <strong className="text-[var(--text)]">Pregnancy Due Date Calculator</strong> uses Naegele&apos;s rule to estimate a due date from the last menstrual period. This is an estimate for informational purposes only. Due dates are not exact — only about 5% of babies are born on their calculated due date. This tool is not a substitute for professional medical advice, ultrasound dating, or clinical assessment. Always consult a qualified healthcare provider for pregnancy care and accurate dating.</li>
           </ul>
         </section>
 
         <section>
           <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">No Professional Advice</h2>
           <p>
-            Nothing on ToolBrigade constitutes legal, financial, medical, or professional advice. Tools like the BMI Calculator, Age Calculator, Date Difference Calculator, and Currency Converter are utilities only — they produce informational results, not professional determinations. Always consult a qualified professional for decisions that matter.
+            Nothing on ToolBrigade constitutes legal, financial, medical, or professional advice. Tools like the BMI Calculator, Age Calculator, Date Difference Calculator, Currency Converter, and Pregnancy Due Date Calculator are utilities only — they produce informational results, not professional determinations. The Pregnancy Due Date Calculator in particular uses a statistical estimate (Naegele&apos;s rule) and should never replace clinical pregnancy dating by a healthcare provider. Always consult a qualified professional for decisions that matter.
           </p>
         </section>
 

@@ -4,9 +4,11 @@ import Link from "next/link";
 import { Wrench } from "lucide-react";
 import { iconMap } from "@/lib/iconMap";
 import { getToolBySlug, getRelatedTools, tools } from "@/config/tools";
+import { codeExamples } from "@/config/codeExamples";
 import ToolCard from "@/components/ToolCard";
 import ToolRenderer from "@/components/ToolRenderer";
 import FaqAccordion from "@/components/FaqAccordion";
+import ShareToolButton from "@/components/ShareToolButton";
 
 type Props = { params: { slug: string } };
 
@@ -112,8 +114,11 @@ export default function ToolPage({ params }: Props) {
         <div className="w-12 h-12 rounded-lg bg-[var(--brand-light)] dark:bg-brand-900/30 flex items-center justify-center text-[var(--brand)] shrink-0">
           <Icon size={24} strokeWidth={2.5} />
         </div>
-        <div>
-          <h1 className="font-display text-2xl font-semibold text-[var(--text)]">{tool.name}</h1>
+        <div className="flex-1">
+          <div className="flex items-start justify-between gap-4">
+            <h1 className="font-display text-2xl font-semibold text-[var(--text)]">{tool.name}</h1>
+            <ShareToolButton slug={tool.slug} />
+          </div>
           <p className="text-[var(--text-muted)] mt-1">{tool.description}</p>
         </div>
       </div>
@@ -141,8 +146,35 @@ export default function ToolPage({ params }: Props) {
       {/* Long description */}
       <section className="mb-10">
         <h2 className="font-display text-base font-semibold text-[var(--text)] mb-3">About {tool.name}</h2>
-        <p className="text-sm text-[var(--text-muted)] leading-relaxed">{tool.longDescription}</p>
+        <div className="space-y-3">
+          {tool.longDescription
+            .split(/\n\n+/)
+            .map((p) => p.trim())
+            .filter(Boolean)
+            .map((paragraph, i) => (
+              <p key={i} className="text-sm text-[var(--text-muted)] leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+        </div>
       </section>
+
+      {/* Code examples */}
+      {codeExamples[tool.slug] && (
+        <section className="mb-10">
+          <h2 className="font-display text-base font-semibold text-[var(--text)] mb-4">Code examples</h2>
+          <div className="space-y-4">
+            {codeExamples[tool.slug].map((ex) => (
+              <div key={ex.label}>
+                <p className="text-xs text-[var(--text-muted)] mb-1 font-mono">{ex.label}</p>
+                <pre className="bg-[var(--bg-subtle)] border border-[var(--border)] rounded-lg p-4 overflow-x-auto text-xs leading-relaxed">
+                  <code>{ex.code}</code>
+                </pre>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* FAQ */}
       <section className="mb-10">

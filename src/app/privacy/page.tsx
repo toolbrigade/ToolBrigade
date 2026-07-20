@@ -109,11 +109,28 @@ export default function PrivacyPage() {
             <li><strong className="text-[var(--text)]">Resend</strong> — transactional email delivery for the suggest-a-tool form. Processes tool name, description, category, and email (all optional except tool name and description) when you explicitly submit that form. The contact page uses direct mailto links and does not involve Resend.</li>
             <li><strong className="text-[var(--text)]">Hosting &amp; CDN</strong> — website delivery infrastructure</li>
             <li><strong className="text-[var(--text)]">exchangerate-api.com</strong> — live exchange rates for the Currency Converter tool only. Only the source currency code is sent in the API request URL. No personal data is transmitted.</li>
+            <li><strong className="text-[var(--text)]">ip-api.com</strong> — IP geolocation data for the IP Address Lookup tool only. When you use that tool, the IP address you query (which may be your own public IP if you leave the field blank) is sent to ip-api.com&apos;s servers to perform the lookup. No other personal data is transmitted. ip-api.com is a free geolocation service used under their non-commercial free tier. See their terms at <a href="https://ip-api.com/docs/legal" className="text-[var(--brand)] hover:underline" target="_blank" rel="noopener noreferrer">ip-api.com/docs/legal</a>.</li>
+            <li><strong className="text-[var(--text)]">CoinGecko API</strong> — live cryptocurrency prices for the Crypto Price Converter tool only. When you click Convert in that tool, a request is made to CoinGecko&apos;s free public API (api.coingecko.com) containing only the coin ID and target currency code. No personal data is transmitted. CoinGecko&apos;s free public API requires no API key and allows approximately 30 requests per minute. See CoinGecko&apos;s privacy policy at <a href="https://www.coingecko.com/en/privacy" className="text-[var(--brand)] hover:underline" target="_blank" rel="noopener noreferrer">coingecko.com/en/privacy</a>.</li>
+            <li><strong className="text-[var(--text)]">Google Speech Recognition (Chrome / Chromium browsers)</strong> — used exclusively by the <strong>Speech to Text</strong> tool. When you use that tool in Chrome or any Chromium-based browser, your microphone audio is sent to Google&apos;s speech-recognition service for processing. This is a browser-level behaviour built into the Web Speech API (SpeechRecognition) and cannot be overridden by ToolBrigade. ToolBrigade itself receives none of this audio — it goes directly from your browser to Google. This is the <strong>sole exception</strong> to ToolBrigade&apos;s &ldquo;nothing leaves your device&rdquo; policy. Do not use the Speech to Text tool for sensitive, confidential, or private speech. The tool displays a prominent warning before you start recording.</li>
           </ul>
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">6. Children&apos;s Privacy</h2>
+          <h2 className="font-display text-lg font-semibold text-[var(--text)] mb-3">5a. Speech to Text — Special Privacy Exception</h2>
+          <div className="rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-4 text-sm text-amber-800 dark:text-amber-200 space-y-2">
+            <p><strong>This section describes the one exception to ToolBrigade&apos;s &ldquo;nothing leaves your device&rdquo; policy.</strong></p>
+            <p>The <strong>Speech to Text</strong> tool uses the browser&apos;s built-in <code className="text-xs bg-amber-100 dark:bg-amber-800 px-1 py-0.5 rounded">SpeechRecognition</code> API (part of the Web Speech API standard). In Chrome and other Chromium-based browsers (Edge, Brave, etc.), this API sends your microphone audio stream to <strong>Google&apos;s speech-recognition servers</strong> for processing. This is a browser-level behaviour that ToolBrigade cannot control or override.</p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>ToolBrigade&apos;s servers receive <strong>none</strong> of your audio.</li>
+              <li>Google processes the audio stream and returns a text transcript to your browser.</li>
+              <li>Google&apos;s handling of this data is governed by <a href="https://policies.google.com/privacy" className="underline" target="_blank" rel="noopener noreferrer">Google&apos;s Privacy Policy</a>.</li>
+              <li>The tool displays a prominent warning before you start recording.</li>
+            </ul>
+            <p><strong>Do not use the Speech to Text tool for sensitive, confidential, medical, legal, or private speech.</strong></p>
+          </div>
+        </section>
+
+        <section>
           <p>
             ToolBrigade is not directed at children under 13. No personal information from children is knowingly collected. If you believe a child has provided personal information, contact me and it will be deleted promptly.
           </p>

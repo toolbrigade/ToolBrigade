@@ -21,8 +21,24 @@ playwright.config.ts
 /.github/
 
 # logs
-dev-server.log
 *.log
+
+# temp output / scratch files
+*.txt
+build_out.txt
+tsc_out.txt
+pw-batch1.txt
+temp_tested.txt
+playwright-chromium-run.txt
+
+# one-off scripts
+audit-tests.js
+rewrite-tools.*
+fix-tools.mjs
+extract-meta.mjs
+
+# seo generation scripts
+/seo-gen/
 
 # zip / archives
 *.zip

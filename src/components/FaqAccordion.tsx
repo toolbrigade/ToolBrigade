@@ -22,9 +22,13 @@ export default function FaqAccordion({ faqs }: { faqs: Faq[] }) {
               className={`shrink-0 ml-4 text-[var(--text-muted)] transition-transform ${open === i ? "rotate-180" : ""}`}
             />
           </button>
-          {open === i && (
-            <p className="px-5 pb-4 text-sm text-[var(--text-muted)] leading-relaxed">{faq.answer}</p>
-          )}
+          {/* Answer is always in the DOM for crawler indexing; CSS hides it visually */}
+          <p
+            className="px-5 text-sm text-[var(--text-muted)] leading-relaxed overflow-hidden transition-all duration-200"
+            style={open === i ? { maxHeight: "500px", paddingBottom: "1rem" } : { maxHeight: 0, paddingBottom: 0 }}
+          >
+            {faq.answer}
+          </p>
         </div>
       ))}
     </div>

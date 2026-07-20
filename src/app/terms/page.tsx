@@ -75,6 +75,7 @@ export default function TermsPage() {
             <li>Do not rely solely on the <strong className="text-[var(--text)]">Currency Converter</strong> for financial transactions — rates are indicative and may differ from those offered by banks or payment processors.</li>
             <li>Do not use the <strong className="text-[var(--text)]">BMI Calculator</strong> as a substitute for professional medical advice.</li>
             <li>Do not use the <strong className="text-[var(--text)]">Text Encryptor</strong> (Caesar cipher, ROT13) for sensitive data — these are not cryptographically secure.</li>
+            <li>Do not use generated numbers from the <strong className="text-[var(--text)]">Credit Card Validator / Generator</strong> for any real transaction. Generated numbers are for testing and development only.</li>
           </ul>
           <p className="mt-3 text-sm">See the <Link href="/disclaimer" className="text-[var(--brand)] hover:underline">Disclaimer</Link> for the full list of tool-specific caveats.</p>
         </section>

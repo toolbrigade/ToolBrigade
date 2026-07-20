@@ -113,7 +113,7 @@ export default function HomePage() {
               return (
                 <Link
                   key={cat}
-                  href={`/tools?category=${cat}`}
+                  href={`/tools/category/${cat.toLowerCase()}`}
                   className="pill pill-inactive inline-flex items-center gap-1.5 text-xs"
                 >
                   <CatIcon size={12} strokeWidth={1.75} />
