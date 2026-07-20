@@ -20,9 +20,7 @@ type PageInfo = {
 };
 
 type PdfPageRef = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   page: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   viewport: any;
 };
 
@@ -124,7 +122,7 @@ export default function PdfTextEditor() {
 
     const bytes = await doc.save();
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" }));
+    a.href = URL.createObjectURL(new Blob([bytes.buffer as ArrayBuffer], { type: "application/pdf" }));
     a.download = "edited.pdf";
     a.click();
     trackTaskComplete("pdf-text-editor", startTime);
