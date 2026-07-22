@@ -24,7 +24,7 @@ type PdfPageRef = {
   viewport: any;
 };
 
-const SCALE = 1.5;
+const BASE_SCALE = 2.5;
 
 export default function PdfTextEditor() {
   const [pageInfos, setPageInfos] = useState<PageInfo[]>([]);
@@ -45,8 +45,11 @@ export default function PdfTextEditor() {
     renders.forEach(({ page, viewport }, i) => {
       const canvas = canvasRefs.current[i];
       if (!canvas) return;
+      const dpr = window.devicePixelRatio || 1;
       canvas.width = viewport.width;
       canvas.height = viewport.height;
+      canvas.style.width = `${viewport.width / dpr}px`;
+      canvas.style.height = `${viewport.height / dpr}px`;
       page.render({ canvasContext: canvas.getContext("2d")!, viewport });
     });
   }, [pageInfos]);
@@ -60,6 +63,9 @@ export default function PdfTextEditor() {
 
       const pdfjsLib = await import("pdfjs-dist");
       pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+
+      const dpr = window.devicePixelRatio || 1;
+      const SCALE = BASE_SCALE * dpr;
 
       const pdf = await pdfjsLib.getDocument({ data: bytes.slice() }).promise;
       const allItems: TextItem[] = [];
@@ -108,7 +114,7 @@ export default function PdfTextEditor() {
       if (!item || newText === item.str) continue;
       const page = pages[item.pageIndex];
       const { height } = page.getSize();
-      const scale = pageInfos[item.pageIndex]?.scale ?? SCALE;
+      const scale = pageInfos[item.pageIndex]?.scale ?? BASE_SCALE;
 
       const pdfX = item.x / scale;
       const pdfY = height - (item.y + item.h) / scale;
@@ -165,7 +171,7 @@ export default function PdfTextEditor() {
                 <p className="text-xs text-[var(--text-muted)] mb-1 font-medium">Page {pi + 1}</p>
                 <div
                   className="relative border border-[var(--border)] rounded shadow-sm inline-block"
-                  style={{ width: info.width, height: info.height }}
+                  style={{ width: info.width / (window.devicePixelRatio || 1), height: info.height / (window.devicePixelRatio || 1) }}
                 >
                   <canvas
                     ref={el => { canvasRefs.current[pi] = el; }}

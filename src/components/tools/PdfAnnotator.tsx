@@ -28,13 +28,15 @@ export default function PdfAnnotator() {
       pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
       const pdf = await pdfjsLib.getDocument({ data: ab.slice(0) }).promise;
       const urls: string[] = [];
+      const dpr = window.devicePixelRatio || 1;
+      const scale = 2.5 * dpr;
       for (let i = 1; i <= pdf.numPages; i++) {
         const page = await pdf.getPage(i);
-        const vp = page.getViewport({ scale: 1.5 });
+        const vp = page.getViewport({ scale });
         const c = document.createElement("canvas");
         c.width = vp.width; c.height = vp.height;
         await page.render({ canvas: c, canvasContext: c.getContext("2d")!, viewport: vp }).promise;
-        urls.push(c.toDataURL());
+        urls.push(c.toDataURL("image/png", 1.0));
       }
       setPdfPages(urls); setCurrentPage(0);
     } catch { setError("Could not render PDF."); }

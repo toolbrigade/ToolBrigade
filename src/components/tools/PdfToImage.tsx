@@ -15,13 +15,15 @@ export default function PdfToImage() {
       const ab = await file.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: ab }).promise;
       const results: string[] = [];
+      const dpr = window.devicePixelRatio || 1;
+      const scale = 2.5 * dpr;
       for (let i = 1; i <= pdf.numPages; i++) {
         const page = await pdf.getPage(i);
-        const vp = page.getViewport({ scale: 2 });
+        const vp = page.getViewport({ scale });
         const canvas = document.createElement("canvas");
         canvas.width = vp.width; canvas.height = vp.height;
         await page.render({ canvasContext: canvas.getContext("2d")! as unknown as CanvasRenderingContext2D, canvas, viewport: vp }).promise;
-        results.push(canvas.toDataURL("image/png"));
+        results.push(canvas.toDataURL("image/png", 1.0));
       }
       setPages(results);
     } catch {
