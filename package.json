@@ -12,10 +12,10 @@
     "test:ui": "playwright test --ui"
   },
   "browserslist": [
-    "> 0.5%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
+    "chrome >= 90",
+    "firefox >= 90",
+    "safari >= 14",
+    "edge >= 90"
   ],
   "dependencies": {
     "@ffmpeg/ffmpeg": "^0.12.15",

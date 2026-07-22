@@ -105,7 +105,7 @@ export default function HomePage() {
           </div>
 
           {/* Category quick-nav strip */}
-          <div className="flex flex-wrap justify-center gap-2 pb-10">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 pb-10 max-w-2xl mx-auto">
             {categories.map((cat) => {
               const meta = categoryMeta[cat];
               const CatIcon = meta?.icon ?? Wrench;
@@ -114,11 +114,13 @@ export default function HomePage() {
                 <Link
                   key={cat}
                   href={`/tools/category/${cat.toLowerCase()}`}
-                  className="pill pill-inactive inline-flex items-center gap-1.5 text-xs"
+                  className="group flex flex-col items-center gap-1.5 p-3 rounded-xl border border-[var(--border)] hover:border-[var(--brand)] hover:bg-[var(--brand-light)] transition-all duration-150"
                 >
-                  <CatIcon size={12} strokeWidth={1.75} />
-                  {cat}
-                  <span className="text-[var(--text-subtle)]">{count}</span>
+                  <div className="w-8 h-8 rounded-lg bg-[var(--brand-light)] group-hover:bg-white/30 flex items-center justify-center text-[var(--brand)] transition-colors">
+                    <CatIcon size={15} strokeWidth={1.75} />
+                  </div>
+                  <span className="text-xs font-medium text-[var(--text-muted)] group-hover:text-[var(--brand)] transition-colors leading-none">{cat}</span>
+                  <span className="text-[10px] text-[var(--text-subtle)] leading-none">{count}</span>
                 </Link>
               );
             })}

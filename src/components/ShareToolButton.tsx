@@ -28,7 +28,7 @@ export default function ShareToolButton({ slug }: { slug: string }) {
   return (
     <button
       onClick={handleShare}
-      className="inline-flex items-center gap-1.5 text-xs text-[var(--text-muted)] hover:text-[var(--text)] border border-[var(--border)] rounded-lg px-3 py-1.5 transition-colors hover:bg-[var(--bg-subtle)]"
+      className="inline-flex items-center gap-1.5 text-xs text-[var(--text-muted)] hover:text-[var(--text)] border border-[var(--border)] rounded-lg px-3 py-1.5 transition-colors hover:bg-[var(--bg-subtle)] whitespace-nowrap shrink-0"
       title="Copy link to this tool"
     >
       {copied ? (

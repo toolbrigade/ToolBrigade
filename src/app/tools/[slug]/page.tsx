@@ -118,9 +118,9 @@ export default function ToolPage({ params }: Props) {
         <div className="w-12 h-12 rounded-lg bg-[var(--brand-light)] dark:bg-brand-900/30 flex items-center justify-center text-[var(--brand)] shrink-0">
           <Icon size={24} strokeWidth={2.5} />
         </div>
-        <div className="flex-1">
-          <div className="flex items-start justify-between gap-4">
-            <h1 className="font-display text-2xl font-semibold text-[var(--text)]">{tool.name}</h1>
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+            <h1 className="font-display text-2xl font-semibold text-[var(--text)] leading-tight">{tool.name}</h1>
             <ShareToolButton slug={tool.slug} />
           </div>
           <p className="text-[var(--text-muted)] mt-1">{tool.description}</p>
